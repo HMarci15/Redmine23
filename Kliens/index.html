@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redmine</title>
-    <style>
+    <!-- <style>
         body{
             font-family: Arial, sans-serif;
             margin: 0;
@@ -17,28 +17,30 @@
         form, select, div{
             margin-bottom: 20px;
         }
-    </style>
+    </style> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Bejelentkezés</h1>
+   <!--  <h1>Bejelentkezés</h1>
     <form id="loginForm">
         <label for="username">Felhasználónév:</label><br>
         <input type="text" id="username" name="username"><br>
         <label for="password">Jelszó:</label><br>
         <input type="password" id="password" name="password"><br>
         <input type="submit" value="Bejelentkezés">
-    </form>
-
-    <h1>Projektlista</h1>
-    <select id="projectList">
+    </form> -->
+<div class="container">
+    <h1 class="text-center my-4">Projektlista</h1>
+    <select id="projectList" class="form-control mb-4">
         <!--A projektek itt lesznek listázva-->
     </select>
 
-    <h1>Feladatok</h1>
-    <div id="taskList">
+    <h1 class="text-center my-4">Feladatok</h1>
+    <div id="taskList" class="mb-4">
         <!--A feladatok itt lesznek listázva-->
     </div>
-
+</div>
     <script src="script.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
