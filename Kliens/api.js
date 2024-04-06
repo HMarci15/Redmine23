@@ -48,7 +48,7 @@ fetch(`${apiUrl}/tasks`, {
 .catch((error) => console.error('Hiba:', error));     */
 
 // API végpont URL-je
-const apiUrl = 'http://localhost:7152/api';
+const apiUrl = 'http://localhost:7152';
 
 // Projektek listázása
 fetch(`${apiUrl}/projects`)
