@@ -1,5 +1,5 @@
-// API végpont URL-je
-const apiUrl = 'http://localhost:5000/api';
+/* // API végpont URL-je
+const apiUrl = 'http://localhost:7152/api';
 
 // Projektek listázása
 fetch(`${apiUrl}/projects`)
@@ -45,4 +45,39 @@ fetch(`${apiUrl}/tasks`, {
 })
 .then(response => response.json())
 .then(data => console.log('Új feladat hozzáadva:', data))
-.catch((error) => console.error('Hiba:', error));    
+.catch((error) => console.error('Hiba:', error));     */
+
+// API végpont URL-je
+const apiUrl = 'http://localhost:7152/api';
+
+// Projektek listázása
+fetch(`${apiUrl}/projects`)
+    .then(response => response.json())
+    .then(data => {
+        const projectList = document.getElementById('projectList');
+        data.forEach(project => {
+            const option = document.createElement('option');
+            option.text = project.name;
+            projectList.add(option);
+        });
+    })
+    .catch(error => console.error('Hiba:', error));
+
+// Új projekt hozzáadása
+// A példa kedvéért most nem hozzuk létre az új projektet
+
+// Feladatok listázása
+fetch(`${apiUrl}/tasks`)
+    .then(response => response.json())
+    .then(data => {
+        const taskList = document.getElementById('taskList');
+        data.forEach(task => {
+            const div = document.createElement('div');
+            div.textContent = task.name;
+            taskList.appendChild(div);
+        });
+    })
+    .catch(error => console.error('Hiba:', error));
+
+// Új feladat hozzáadása
+// A példa kedvéért most nem hozzuk létre az új feladatot
