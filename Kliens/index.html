@@ -4,21 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redmine</title>
-    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
    
 <div class="container">
     <h1 class="text-center my-4">Projektlista</h1>
-    <select id="projectList" class="form-control mb-4">
-        <!--A projektek itt lesznek listázva-->
-    </select>
 
-    <h1 class="text-center my-4">Feladatok</h1>
-    <div id="taskList" class="mb-4">
-        <!--A feladatok itt lesznek listázva-->
-    </div>
+        <input type="text" id="myInput" onkeyup="searchOnType()" placeholder="Keresés típus alapján..." title="Type in a name">
+
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Projekt azonosítója</th>
+              <th>Projekt neve</th>
+              <th>Projekt leírása</th>
+              <th>Határidő</th>
+              <th>Projekt típusa</th>
+              <th>Műveletek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+              <td>asd</td>
+              <td>
+                <a href="modify.html"><button type="button" class="btn btn-primary">Módosít</button></a>
+                <a href="list.html"><button type="button" class="btn btn-primary">Listázás</button></a>
+                <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+              <td>asd</td>
+              <td>
+                <a href="modify.html"><button type="button" class="btn btn-primary">Módosít</button></a>
+                <a href="list.html"><button type="button" class="btn btn-primary">Listázás</button></a>
+                <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
+              </td>
+            <tr>
+              <td>3</td>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+              <td>asd</td>
+              <td>
+                <a href="modify.html"><button type="button" class="btn btn-primary">Módosít</button></a>
+                <a href="list.html"><button type="button" class="btn btn-primary">Listázás</button></a>
+                <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
+              </td>
+            </tr>
+          </tbody>
+        
+        </table>
+
+       
+
 </div>
     <script src="index.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

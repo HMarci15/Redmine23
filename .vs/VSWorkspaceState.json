@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Kliens",
+    "\\Server",
+    "\\Server\\Redmine",
+    "\\Server\\Redmine\\Redmine",
+    "\\Server\\Redmine\\Redmine\\Controllers"
   ],
+  "SelectedNode": "\\Server\\Redmine\\Redmine.sln",
   "PreviewInSolutionExplorer": false
 }

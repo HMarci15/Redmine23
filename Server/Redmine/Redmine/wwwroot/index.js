@@ -15,7 +15,7 @@ function getTasks(projectId){
 
 //Új feladat hozzáadása
 function addTask(projectId, taskName, taskDescription, developerId){
-//szerveroldali hozzáadás
-console.log('Új feladat hozáadása:', projectId, taskName, taskDescription, developerId);
+    //szerveroldali hozzáadás
+    console.log('Új feladat hozáadása:', projectId, taskName, taskDescription, developerId);
 
 }
