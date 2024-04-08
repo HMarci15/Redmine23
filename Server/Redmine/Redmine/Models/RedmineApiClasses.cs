@@ -54,7 +54,8 @@ namespace Redmine.Models
         public  List<Manager> Managers { get; } = new List<Manager>
         {
             new Manager { ManagerId = 1, Name = "John Doe", Email = "john.doe@example.com", Password = "password123" },
-            new Manager { ManagerId = 2, Name = "Jane Smith", Email = "jane.smith@example.com", Password = "securepassword" }
+            new Manager { ManagerId = 2, Name = "Jane Smith", Email = "jane.smith@example.com", Password = "securepassword" },
+             new Manager { ManagerId = 2, Name = "Matyi marci", Email = "string", Password = "string" }
         };
 
         public  List<Developer> Developers { get; } = new List<Developer>

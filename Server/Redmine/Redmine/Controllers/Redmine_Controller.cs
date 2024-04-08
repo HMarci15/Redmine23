@@ -11,14 +11,7 @@ namespace Redmine.Controllers
     public class ProjectController : ControllerBase
     {
 
-        /*        [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest loginRequest)
-        {
-            // Ellenőrzés, hogy a felhasználónév és jelszó megtalálható-e a listában
-            int matchCount = SampleData.Managers.Count(d => d.Email == loginRequest.Email && d.Password == loginRequest.Password);
-
-            return Ok(new { MatchCount = matchCount });
-        }   */
+       
 
         // Projekt listázása
         private readonly SampleData _sampleData;
@@ -28,19 +21,54 @@ namespace Redmine.Controllers
             _sampleData = new SampleData();
         }
 
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] LoginRequest loginRequest)
+        {
+            // Ellenőrzés, hogy a felhasználónév és jelszó megtalálható-e a listában
+            var matchingManager = _sampleData.Managers.FirstOrDefault(d => d.Email == loginRequest.Email && d.Password == loginRequest.Password);
+
+            if (matchingManager != null)
+            {
+                // Ha találtunk egyezést, visszaadjuk a felhasználó nevét
+                return Ok(new { Name = matchingManager.Name });
+            }
+            else
+            {
+                // Ha nem találtunk egyezést, hibaüzenetet adunk vissza
+                return BadRequest("Hibás felhasználónév vagy jelszó.");
+            }
+        }
+
         [HttpGet]
           public IEnumerable<object> GetProjects()
           {
               return _sampleData.Projects.Select(project => new { project.ProjectId, project.Name }).ToList();
           }
 
-        // Projekt feladatok listázása
-        [HttpGet("{projectId}/task")]
-        public IEnumerable<object> GetProjectTasks(int projectId)
+        [HttpGet("/project/{projectId}/tasks")]
+        public IActionResult GetProjectTasks(int projectId)
         {
-            var tasks = _sampleData.TasksList.Where(task => task.ProjectId == projectId);
-            return tasks.Select(task => new { task.TaskId, task.Name }).ToList();
+            var tasks = _sampleData.TasksList
+                .Where(task => task.ProjectId == projectId)
+                .Select(task => new
+                {
+                    task.TaskId,
+                    task.Name,
+                    task.Description,
+                    task.DeadLine,
+                    TaskTypeName = GetTaskTypeName(task.TaskId)
+                })
+                .ToList();
+
+            return Ok(tasks);
         }
+
+        private string GetTaskTypeName(int taskTypeId)
+        {
+            var taskType = _sampleData.ProjectTypes.FirstOrDefault(pt => pt.ProjectTypeId == taskTypeId);
+            return taskType != null ? taskType.Name : null;
+        }
+
         [HttpGet("{projId}/task/{taskId}")]
         public IActionResult GetTaskDetails(int projId, int taskId)
         {
