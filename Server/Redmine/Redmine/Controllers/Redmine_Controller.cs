@@ -21,18 +21,53 @@ namespace Redmine.Controllers
         }   */
 
         // Projekt listázása
-        [HttpGet]
-        public IEnumerable<object> GetProjects()
+        private readonly SampleData _sampleData;
+
+        public ProjectController()
         {
-            return SampleData.Projects.Select(project => new { project.ProjectId, project.Name }).ToList();
+            _sampleData = new SampleData();
         }
+
+        [HttpGet]
+          public IEnumerable<object> GetProjects()
+          {
+              return _sampleData.Projects.Select(project => new { project.ProjectId, project.Name }).ToList();
+          }
 
         // Projekt feladatok listázása
         [HttpGet("{projectId}/task")]
         public IEnumerable<object> GetProjectTasks(int projectId)
         {
-            var tasks = SampleData.Tasks.Where(task => task.ProjectId == projectId);
+            var tasks = _sampleData.TasksList.Where(task => task.ProjectId == projectId);
             return tasks.Select(task => new { task.TaskId, task.Name }).ToList();
+        }
+        [HttpGet("{projId}/task/{taskId}")]
+        public IActionResult GetTaskDetails(int projId, int taskId)
+        {
+            var task = _sampleData.TasksList.FirstOrDefault(t => t.ProjectId == projId && t.TaskId == taskId);
+            if (task == null)
+                return NotFound();
+
+            return Ok(new { task.TaskId, task.Name, task.Description, task.UserId, task.DeadLine });
+        }
+
+
+        
+
+        [HttpGet("{projId}/selfTask")]
+        public IEnumerable<object> GetSelfTasks(int projId)
+        {
+            // Assuming UserId is a string representing developer name
+            var currentUserTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.UserId == User.Identity.Name);
+            return currentUserTasks.Select(task => new { task.TaskId, task.Name }).ToList();
+        }
+
+        [HttpGet("{projId}/deadlineTask")]
+        public IEnumerable<object> GetDeadlineTasks(int projId)
+        {
+            var deadlineTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.DeadLine.Date == DateTime.Today);
+            return deadlineTasks.Select(task => new { task.TaskId, task.Name }).ToList();
         }
     }
 }
+
