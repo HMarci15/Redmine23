@@ -20,7 +20,7 @@ namespace Redmine.Controllers
         {
             _sampleData = new SampleData();
         }
-
+          // 1
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest loginRequest)
         {
@@ -39,12 +39,30 @@ namespace Redmine.Controllers
             }
         }
 
+               //2
         [HttpGet]
-          public IEnumerable<object> GetProjects()
-          {
-              return _sampleData.Projects.Select(project => new { project.ProjectId, project.Name, project.Description }).ToList();
-          }
+        public IActionResult GetProjects()
+        {
+            var projects = _sampleData.Projects
+                .Select(project => new
+                {
+                    project.ProjectId,
+                    project.Name,
+                    project.Description,
+                    ProjectTypeName = GetProjectTypeName(project.TypeId)
+                })
+                .ToList();
 
+            return Ok(projects);
+        }
+        private string GetProjectTypeName(int projectTypeId)
+        {
+            var projectType = _sampleData.ProjectTypes.FirstOrDefault(pt => pt.ProjectTypeId == projectTypeId);
+            return projectType != null ? projectType.Name : null;
+        }
+
+               //3
+                      
         [HttpGet("/project/{projectId}/tasks")]
         public IActionResult GetProjectTasks(int projectId)
         {
@@ -56,19 +74,21 @@ namespace Redmine.Controllers
                     task.Name,
                     task.Description,
                     task.DeadLine,
-                    TaskTypeName = GetTaskTypeName(task.TaskId)
+                    ManagerName = GetManagerName(task.UserId)
                 })
                 .ToList();
 
             return Ok(tasks);
         }
 
-        private string GetTaskTypeName(int taskTypeId)
+        private string GetManagerName(int managerId)
         {
-            var taskType = _sampleData.ProjectTypes.FirstOrDefault(pt => pt.ProjectTypeId == taskTypeId);
-            return taskType != null ? taskType.Name : null;
+            var manager = _sampleData.Managers.FirstOrDefault(m => m.ManagerId == managerId);
+            return manager != null ? manager.Name : null;
         }
 
+                // 3+      
+             /*
         [HttpGet("{projId}/task/{taskId}")]
         public IActionResult GetTaskDetails(int projId, int taskId)
         {
@@ -78,18 +98,19 @@ namespace Redmine.Controllers
 
             return Ok(new { task.TaskId, task.Name, task.Description, task.UserId, task.DeadLine });
         }
+                */
 
-
-        
-
+         // 5
+          /*
         [HttpGet("{projId}/selfTask")]
         public IEnumerable<object> GetSelfTasks(int projId)
         {
             // Assuming UserId is a string representing developer name
-            var currentUserTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.UserId == User.Identity.Name);
+            var currentUserTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.UserId == User.Identity.id);
             return currentUserTasks.Select(task => new { task.TaskId, task.Name }).ToList();
-        }
+        }      */
 
+        // 6
         [HttpGet("{projId}/deadlineTask")]
         public IEnumerable<object> GetDeadlineTasks(int projId)
         {
