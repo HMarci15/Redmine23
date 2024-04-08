@@ -42,7 +42,7 @@ namespace Redmine.Controllers
         [HttpGet]
           public IEnumerable<object> GetProjects()
           {
-              return _sampleData.Projects.Select(project => new { project.ProjectId, project.Name }).ToList();
+              return _sampleData.Projects.Select(project => new { project.ProjectId, project.Name, project.Description }).ToList();
           }
 
         [HttpGet("/project/{projectId}/tasks")]
