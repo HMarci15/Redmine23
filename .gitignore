@@ -425,3 +425,5 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of httpswww.toptal.comdevelopersgitignoreapivisualstudio,visualstudiocode,dotnetcore
+Server/Redmine/Redmine/bin/Debug/net8.0/Redmine.pdb
+Server/Redmine/Redmine/bin/Debug/net8.0/Redmine.dll
