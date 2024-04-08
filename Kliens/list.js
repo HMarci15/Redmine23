@@ -1,7 +1,7 @@
 const apiUrl = 'http://localhost:5148'; // Az API URL-je, amelyről lekéred az adatokat
 const projectId = 1; // Az aktuális projekt azonosítója, ami a Swagger-ben van megadva
 
-fetch(`${apiUrl}/Project/${projectId}/task`)
+fetch(`${apiUrl}/Project/${projectId}/tasks`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Hiba a válaszban');
@@ -23,6 +23,8 @@ function displayProject(task) {
             <tr>
                 <td>${item.taskId}</td>
                 <td>${item.name}</td>
+                <td>${item.description}</td>
+                <td>${item.deadLine}</td>
             </tr>
         `;
         tableBody.innerHTML += row;

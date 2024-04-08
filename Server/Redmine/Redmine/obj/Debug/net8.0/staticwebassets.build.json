@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HIVNvZvlYLWViGn1WjuEZIp8nFKEhLNlHoU86vE+69M=",
+  "Hash": "Cs/ZpmXZY8+xYBvdu/Y8NAJ2jjtULKi2jVZxtXyga0k=",
   "Source": "Redmine",
   "BasePath": "_content/Redmine",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Redmine\\wwwroot",
       "Source": "Redmine",
-      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\api.js",
+      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\api.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "api.js",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\api.js"
     },
     {
-      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\index.html",
+      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.html",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\index.js",
+      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "index.js",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\index.js"
     },
     {
-      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\login.html",
+      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.html",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "login.html",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\login.html"
     },
     {
-      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\login.js",
+      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "login.js",
       "AssetKind": "All",
