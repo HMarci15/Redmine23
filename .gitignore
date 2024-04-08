@@ -427,3 +427,6 @@ FodyWeavers.xsd
 # End of httpswww.toptal.comdevelopersgitignoreapivisualstudio,visualstudiocode,dotnetcore
 Server/Redmine/Redmine/bin/Debug/net8.0/Redmine.pdb
 Server/Redmine/Redmine/bin/Debug/net8.0/Redmine.dll
+Server/Redmine/Redmine/bin/Debug/net8.0/Redmine.dll
+Server/Redmine/Redmine/bin/Debug/net8.0/Redmine.exe
+Server/Redmine/Redmine/bin/Debug/net8.0/Redmine.pdb
