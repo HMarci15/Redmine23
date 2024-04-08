@@ -23,6 +23,7 @@ task.forEach((item, index) => {
             <td>${item.projectId}</td>
             <td>${item.name}</td>
             <td>${item.description}</td>
+            <td>${item.projectTypeName}</td>
             <td>
                 <a href="list.html"><button type="button" class="btn btn-primary">Listázás</button></a>
                 <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
@@ -72,10 +73,10 @@ function searchOnType() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    table = document.getElementById("taskTableBody"); // Módosítás: "taskTableBody"-ra változtatva
+    table = document.getElementById("taskTableBody");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1]; // Módosítás: a "td" elem indexét "1"-re változtatva, hogy a "Projekt neve" oszlop szerint keressen
+      td = tr[i].getElementsByTagName("td")[3];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -86,5 +87,6 @@ function searchOnType() {
       }       
     }
 }
+
 
 
