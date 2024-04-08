@@ -1,3 +1,15 @@
+// ...
+if (response.ok) {
+    const data = await response.json();
+    // Visszaküldött felhasználónév kiíratása
+    console.log('Visszaküldött felhasználónév:', data.Username);
+    // Felhasználónév kiíratása a HTML-be
+    document.getElementById('loggedInUser').textContent = `Bejelentkezett felhasználó: ${data.Username}`;
+    // Itt további műveleteket végezhetsz a felhasználónévvel
+} else {
+    console.error('Hiba a szerver válaszában:', response.status, response.statusText);
+}
+// ...
 
 
 //Projektlista lekérdezése
