@@ -64,8 +64,25 @@ document.getElementById("showTasksBtn").addEventListener("click", function() {
     .then(data => {
         console.log('Feladat adatok:', data);
         displayTasks(data);
+        // Közeli Határidős Feladatok Megjelenítése gomb elrejtése
+        document.getElementById("showTasksBtn").style.display = "none";
+        // Elrejtés gomb megjelenítése
+        document.getElementById("hideTasksBtn").style.display = "inline-block";
     })
     .catch(error => console.error('Hiba:', error));
+
+    
+});
+
+// Elrejtés gomb eseménykezelője
+document.getElementById("hideTasksBtn").addEventListener("click", function() {
+    // Közeli Határidős Feladatok elrejtése
+    document.getElementById("tasksTableContainer").style.display = "none";
+
+    // Elrejtés gomb elrejtése
+    document.getElementById("hideTasksBtn").style.display = "none";
+    // Közeli Határidős Feladatok Megjelenítése gomb megjelenítése újra
+    document.getElementById("showTasksBtn").style.display = "inline-block";
 });
 
 function displayTasks(tasks) {
