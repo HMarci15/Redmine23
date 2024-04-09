@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Server",
+    "\\Server\\Redmine"
   ],
-  "SelectedNode": "\\C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub",
+  "SelectedNode": "\\Server\\Redmine\\Redmine.sln",
   "PreviewInSolutionExplorer": false
 }

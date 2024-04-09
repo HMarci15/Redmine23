@@ -20,12 +20,14 @@ namespace Redmine.Controllers
         {
             _sampleData = new SampleData();
         }
-          // 1
+
+
+        // 1
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest loginRequest)
+        public IActionResult Login(string email, string password)
         {
             // Ellenőrzés, hogy a felhasználónév és jelszó megtalálható-e a listában
-            var matchingManager = _sampleData.Managers.FirstOrDefault(d => d.Email == loginRequest.Email && d.Password == loginRequest.Password);
+            var matchingManager = _sampleData.Managers.FirstOrDefault(d => d.Email == email && d.Password == password);
 
             if (matchingManager != null)
             {
@@ -35,11 +37,11 @@ namespace Redmine.Controllers
             else
             {
                 // Ha nem találtunk egyezést, hibaüzenetet adunk vissza
-                return BadRequest("Hibás felhasználónév vagy jelszó.");
+                return BadRequest("Hibás Email vagy jelszó.");
             }
         }
 
-               //2
+        //2
         [HttpGet]
         public IActionResult GetProjects()
         {
@@ -101,21 +103,21 @@ namespace Redmine.Controllers
                 */
 
          // 5
-          /*
-        [HttpGet("{projId}/selfTask")]
-        public IEnumerable<object> GetSelfTasks(int projId)
+          
+        [HttpGet("selfTask")]
+        public IEnumerable<object> GetSelfTasks()
         {
             // Assuming UserId is a string representing developer name
-            var currentUserTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.UserId == User.Identity.id);
+            var currentUserTasks = _sampleData.TasksList.Where(t => t.UserId==3 );
             return currentUserTasks.Select(task => new { task.TaskId, task.Name }).ToList();
-        }      */
+        }      
 
         // 6
-        [HttpGet("{projId}/deadlineTask")]
-        public IEnumerable<object> GetDeadlineTasks(int projId)
+        [HttpGet("deadlineTask")]
+        public IEnumerable<object> GetDeadlineTasks()
         {
-            var deadlineTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.DeadLine.Date == DateTime.Today);
-            return deadlineTasks.Select(task => new { task.TaskId, task.Name }).ToList();
+            var deadlineTasks = _sampleData.TasksList.Where(t => t.DeadLine.Date == DateTime.Today);
+            return deadlineTasks.Select(task => new { task.TaskId, task.Name,task.Description, task.DeadLine.Date }).ToList();
         }
     }
 }

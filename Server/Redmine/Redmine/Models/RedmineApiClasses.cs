@@ -66,9 +66,9 @@ namespace Redmine.Models
 
         public  List<Tasks> TasksList { get; } = new List<Tasks>
 {
-    new Tasks { TaskId = 1, Name = "Task 1", Description = "Description for Task 1", ProjectId = 1, UserId = 1, DeadLine = DateTime.Now.AddDays(7) },
-    new Tasks { TaskId = 2, Name = "Task 2", Description = "Description for Task 2", ProjectId = 1, UserId = 2, DeadLine = DateTime.Now.AddDays(14) },
-    new Tasks { TaskId = 3, Name = "Task 3", Description = "Description for Task 3", ProjectId = 2, UserId = 3, DeadLine = DateTime.Now.AddDays(10) }
+    new Tasks { TaskId = 1, Name = "Task 1", Description = "Description for Task 1", ProjectId = 1, UserId = 1, DeadLine = DateTime.Now },
+    new Tasks { TaskId = 2, Name = "Task 2", Description = "Description for Task 2", ProjectId = 1, UserId = 2, DeadLine = DateTime.Now },
+    new Tasks { TaskId = 3, Name = "Task 3", Description = "Description for Task 3", ProjectId = 2, UserId = 3, DeadLine = DateTime.Now }
 };
 
         public  List<Project> Projects { get; } = new List<Project>
