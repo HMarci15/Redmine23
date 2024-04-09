@@ -11,7 +11,7 @@ namespace Redmine.Controllers
     public class ProjectController : ControllerBase
     {
 
-       
+
 
         // Projekt listázása
         private readonly SampleData _sampleData;
@@ -20,12 +20,14 @@ namespace Redmine.Controllers
         {
             _sampleData = new SampleData();
         }
-          // 1
+
+
+        // 1
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest loginRequest)
+        public IActionResult Login(string email, string password)
         {
             // Ellenőrzés, hogy a felhasználónév és jelszó megtalálható-e a listában
-            var matchingManager = _sampleData.Managers.FirstOrDefault(d => d.Email == loginRequest.Email && d.Password == loginRequest.Password);
+            var matchingManager = _sampleData.Managers.FirstOrDefault(d => d.Email == email && d.Password == password);
 
             if (matchingManager != null)
             {
@@ -35,11 +37,11 @@ namespace Redmine.Controllers
             else
             {
                 // Ha nem találtunk egyezést, hibaüzenetet adunk vissza
-                return BadRequest("Hibás felhasználónév vagy jelszó.");
+                return BadRequest("Hibás Email vagy jelszó.");
             }
         }
 
-               //2
+        //2
         [HttpGet]
         public IActionResult GetProjects()
         {
@@ -61,8 +63,8 @@ namespace Redmine.Controllers
             return projectType != null ? projectType.Name : null;
         }
 
-               //3
-                      
+        //3
+
         [HttpGet("/project/{projectId}/tasks")]
         public IActionResult GetProjectTasks(int projectId)
         {
@@ -87,35 +89,35 @@ namespace Redmine.Controllers
             return manager != null ? manager.Name : null;
         }
 
-                // 3+      
-             /*
-        [HttpGet("{projId}/task/{taskId}")]
-        public IActionResult GetTaskDetails(int projId, int taskId)
-        {
-            var task = _sampleData.TasksList.FirstOrDefault(t => t.ProjectId == projId && t.TaskId == taskId);
-            if (task == null)
-                return NotFound();
+        // 3+      
+        /*
+   [HttpGet("{projId}/task/{taskId}")]
+   public IActionResult GetTaskDetails(int projId, int taskId)
+   {
+       var task = _sampleData.TasksList.FirstOrDefault(t => t.ProjectId == projId && t.TaskId == taskId);
+       if (task == null)
+           return NotFound();
 
-            return Ok(new { task.TaskId, task.Name, task.Description, task.UserId, task.DeadLine });
-        }
-                */
+       return Ok(new { task.TaskId, task.Name, task.Description, task.UserId, task.DeadLine });
+   }
+           */
 
-         // 5
-          /*
-        [HttpGet("{projId}/selfTask")]
-        public IEnumerable<object> GetSelfTasks(int projId)
+        // 5
+
+        [HttpGet("selfTask")]
+        public IEnumerable<object> GetSelfTasks()
         {
             // Assuming UserId is a string representing developer name
-            var currentUserTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.UserId == User.Identity.id);
+            var currentUserTasks = _sampleData.TasksList.Where(t => t.UserId == 3);
             return currentUserTasks.Select(task => new { task.TaskId, task.Name }).ToList();
-        }      */
+        }
 
         // 6
-        [HttpGet("{projId}/deadlineTask")]
-        public IEnumerable<object> GetDeadlineTasks(int projId)
+        [HttpGet("deadlineTask")]
+        public IEnumerable<object> GetDeadlineTasks()
         {
-            var deadlineTasks = _sampleData.TasksList.Where(t => t.ProjectId == projId && t.DeadLine.Date == DateTime.Today);
-            return deadlineTasks.Select(task => new { task.TaskId, task.Name }).ToList();
+            var deadlineTasks = _sampleData.TasksList.Where(t => t.DeadLine.Date == DateTime.Today);
+            return deadlineTasks.Select(task => new { task.TaskId, task.Name, task.Description, task.DeadLine.Date }).ToList();
         }
     }
 }
