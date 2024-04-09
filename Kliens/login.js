@@ -1,25 +1,10 @@
-// const apiUrl = 'http://localhost:5148';
-
-// document.getElementById("loginForm").addEventListener("submit", function(event) {
-//     event.preventDefault(); 
-    
-//     var username = document.getElementById("username").value;
-//     var password = document.getElementById("password").value;
-    
-//     var url = `http://localhost:5148/Project/login?username=${username}&password=${password}`;
-    
-//     window.location.href = url;
-// });
-
-
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault(); 
     
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     
-    var url = `http://localhost:5148/Project/login?email=${email}&password=${password}`; // Adjust the URL according to your needs
-    
+    var url = `http://localhost:5148/Project/login?email=${email}&password=${password}`; 
     var formData = { 
         email: email,
         password: password

@@ -1,5 +1,4 @@
-const apiUrl = 'http://localhost:5148'; // Az API URL-je, amelyről lekéred az adatokat
-
+const apiUrl = 'http://localhost:5148'; 
 fetch(`${apiUrl}/Project`)
 .then(response => {
     if (!response.ok) {
@@ -15,7 +14,7 @@ fetch(`${apiUrl}/Project`)
 
 function displayProject(task) {
 const tableBody = document.getElementById('taskTableBody');
-tableBody.innerHTML = ''; // Előző sorok törlése (ha voltak)
+tableBody.innerHTML = ''; 
 
 task.forEach((item, index) => {
     const row = `
@@ -25,7 +24,7 @@ task.forEach((item, index) => {
             <td>${item.description}</td>
             <td>${item.projectTypeName}</td>
             <td>
-                <a href="list.html"><button type="button" class="btn btn-primary">Feldatok</button></a>
+                <a href="list.html"><button type="button" class="btn btn-primary">Feladatok</button></a>
                 <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
             </td>
         </tr>
@@ -33,27 +32,6 @@ task.forEach((item, index) => {
     `;
     tableBody.innerHTML += row;
 });
-}
-
-
-//Projektlista lekérdezése
-function getProjects(){
-    //szerveroldali lekérdezés
-    console.log('Projektlista lekérdezése');
-}
-getProjects();
-
-//Feladatok listázása
-function getTasks(projectId){
-    //szerveroldali lekérdezés
-    console.log('Feladatok listázása a következő projekthez:', projectId);
-}
-
-//Új feladat hozzáadása
-function addTask(projectId, taskName, taskDescription, developerId){
-//szerveroldali hozzáadás
-console.log('Új feladat hozáadása:', projectId, taskName, taskDescription, developerId);
-
 }
 
 function searchOnType() {
@@ -77,22 +55,35 @@ function searchOnType() {
 
 document.getElementById("showTasksBtn").addEventListener("click", function() {
     fetch(`${apiUrl}/Project/deadlineTask`)
-    .then(response => response.json())
-    .then(data => {
-        var tasks = data; // feltételezzük, hogy a válasz egy tömb feladatokat tartalmaz
-
-        var tasksBody = document.getElementById("tasksBody");
-        tasksBody.innerHTML = ""; // Ürítsük ki a táblázatot
-
-        // Adjuk hozzá a feladatokat a táblázathoz
-        tasks.forEach(function(task) {
-            var row = document.createElement("tr");
-            row.innerHTML = `<td>${task.task}</td><td>${task.deadline}</td><td>${task.responsible}</td>`;
-            tasksBody.appendChild(row);
-        });
-
-        // Jelenítsük meg a táblázatot
-        document.getElementById("tasksTableContainer").style.display = "block";
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Hiba a válaszban');
+        }
+        return response.json();
     })
-    .catch(error => console.error('Error:', error));
+    .then(data => {
+        console.log('Feladat adatok:', data);
+        displayTasks(data);
+    })
+    .catch(error => console.error('Hiba:', error));
 });
+
+function displayTasks(tasks) {
+    const tableBody = document.getElementById('tasksBody');
+    tableBody.innerHTML = ''; // Előző sorok törlése (ha voltak)
+
+    tasks.forEach(task => {
+        const row = `
+            <tr>
+                <td>${task.taskId}</td>
+                <td>${task.name}</td>
+                <td>${task.description}</td>
+                <td>${task.date}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+
+    // Jelenítsük meg a táblázatot
+    document.getElementById("tasksTableContainer").style.display = "block";
+}

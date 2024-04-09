@@ -1,4 +1,3 @@
-// Feladat hozzáadása
 $(document).ready(function() {
     $('#taskForm').submit(function(event) {
         event.preventDefault();
@@ -18,12 +17,10 @@ $(document).ready(function() {
         }
     });
 
-    // Feladat törlése
     $(document).on('click', '.deleteTask', function() {
         $(this).closest('li').remove();
     });
 
-    // Feladat szerkesztése
     $(document).on('click', '.editTask', function() {
         var listItem = $(this).closest('li');
         var taskName = $(this).data('taskName');
@@ -41,7 +38,6 @@ $(document).ready(function() {
         listItem.html(editForm);
     });
 
-    // Feladat szerkesztés mentése
     $(document).on('click', '.saveTask', function() {
         var editedTaskName = $(this).siblings('.editForm').find('.editInput').eq(0).val();
         var editedTaskDescription = $(this).siblings('.editForm').find('.editInput').eq(1).val();
