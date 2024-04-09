@@ -25,7 +25,7 @@ task.forEach((item, index) => {
             <td>${item.description}</td>
             <td>${item.projectTypeName}</td>
             <td>
-                <a href="list.html"><button type="button" class="btn btn-primary">Listázás</button></a>
+                <a href="list.html"><button type="button" class="btn btn-primary">Feldatok</button></a>
                 <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
             </td>
         </tr>
@@ -34,19 +34,6 @@ task.forEach((item, index) => {
     tableBody.innerHTML += row;
 });
 }
-
-// ...
-// if (response.ok) {
-//     const data = await response.json();
-//     // Visszaküldött felhasználónév kiíratása
-//     console.log('Visszaküldött felhasználónév:', data.Username);
-//     // Felhasználónév kiíratása a HTML-be
-//     document.getElementById('loggedInUser').textContent = `Bejelentkezett felhasználó: ${data.Username}`;
-//     // Itt további műveleteket végezhetsz a felhasználónévvel
-// } else {
-//     console.error('Hiba a szerver válaszában:', response.status, response.statusText);
-// }
-// ...
 
 
 //Projektlista lekérdezése
@@ -88,5 +75,24 @@ function searchOnType() {
     }
 }
 
+document.getElementById("showTasksBtn").addEventListener("click", function() {
+    fetch(`${apiUrl}/Project/deadlineTask`)
+    .then(response => response.json())
+    .then(data => {
+        var tasks = data; // feltételezzük, hogy a válasz egy tömb feladatokat tartalmaz
 
+        var tasksBody = document.getElementById("tasksBody");
+        tasksBody.innerHTML = ""; // Ürítsük ki a táblázatot
 
+        // Adjuk hozzá a feladatokat a táblázathoz
+        tasks.forEach(function(task) {
+            var row = document.createElement("tr");
+            row.innerHTML = `<td>${task.task}</td><td>${task.deadline}</td><td>${task.responsible}</td>`;
+            tasksBody.appendChild(row);
+        });
+
+        // Jelenítsük meg a táblázatot
+        document.getElementById("tasksTableContainer").style.display = "block";
+    })
+    .catch(error => console.error('Error:', error));
+});
