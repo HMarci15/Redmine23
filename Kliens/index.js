@@ -87,7 +87,7 @@ document.getElementById("hideTasksBtn").addEventListener("click", function() {
 
 function displayTasks(tasks) {
     const tableBody = document.getElementById('tasksBody');
-    tableBody.innerHTML = ''; // Előző sorok törlése (ha voltak)
+    tableBody.innerHTML = ''; 
 
     tasks.forEach(task => {
         const row = `
@@ -101,6 +101,5 @@ function displayTasks(tasks) {
         tableBody.innerHTML += row;
     });
 
-    // Jelenítsük meg a táblázatot
     document.getElementById("tasksTableContainer").style.display = "block";
 }

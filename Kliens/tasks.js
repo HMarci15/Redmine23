@@ -49,3 +49,34 @@ $(document).ready(function() {
         listItem.html(taskInfo).append(editBtn).append(deleteBtn);
     });
 });
+
+fetch('http://localhost:5148/Project/Developers')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Hiba a válaszban');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Fejlesztők:', data);
+
+    const developerSelect = document.getElementById('developer');
+
+    developerSelect.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Válassz fejlesztőt...';
+    developerSelect.appendChild(defaultOption);
+
+    data.forEach(developer => {
+      const option = document.createElement('option');
+      option.value = developer.developerId;
+      option.textContent = developer.name;
+      developerSelect.appendChild(option);
+    });
+  })
+  .catch(error => {
+    console.error('Hiba:', error);
+  });
+
