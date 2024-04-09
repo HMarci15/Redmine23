@@ -101,6 +101,58 @@ namespace Redmine.Controllers
        return Ok(new { task.TaskId, task.Name, task.Description, task.UserId, task.DeadLine });
    }
            */
+        // 4 put + get
+        [HttpGet("Developers")]
+        public IActionResult getDevelopers()
+        {
+            // Assuming UserId is a string representing developer name
+            var dev = _sampleData.Developers.Select(dev => new { dev.DeveloperId,dev.Name }).ToList();
+
+            return Ok(dev);
+        }
+
+        [HttpPost("{devId}/task")]
+        public ActionResult<Tasks> CreateTask(int devId, Tasks model)
+        {
+            // Ellenőrizzük, hogy a projekthez tartozik-e ilyen azonosítójú projekt
+            var project = _sampleData.Projects.FirstOrDefault(p => p.ProjectId == model.ProjectId);
+            if (project == null)
+            {
+                return NotFound("Nem található ilyen azonosítójú projekt.");
+            }
+
+            // Ellenőrizzük, hogy a fejlesztő létezik-e a rendszerben
+            var developer = _sampleData.Developers.FirstOrDefault(d => d.DeveloperId == devId);
+            if (developer == null)
+            {
+                return BadRequest("Nem található ilyen nevű fejlesztő.");
+            }
+
+            // Új feladat létrehozása
+            var newTask = new Tasks
+            {
+                TaskId = _sampleData.TasksList.Max(t => t.TaskId) + 1,
+                Name = model.Name,
+                Description = model.Description,
+                ProjectId = model.ProjectId,
+                UserId = developer.DeveloperId, // Fejlesztő azonosítója
+                DeadLine = model.DeadLine
+            };
+            var ProjectDevelopers = new ProjectDeveloper
+            {
+                DeveloperId = devId,
+                ProjectId = model.ProjectId
+                 
+            };
+
+               _sampleData.ProjectDevelopers.Add(ProjectDevelopers);
+            _sampleData.TasksList.Add(newTask);
+
+            // Visszaadjuk az elkészült feladatot
+            return Ok(newTask);
+        }
+
+
 
         // 5
 

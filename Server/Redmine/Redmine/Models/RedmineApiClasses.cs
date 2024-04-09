@@ -18,7 +18,7 @@ namespace Redmine.Models
         public string Email { get; set; }
     }
 
-    class Tasks
+    public class Tasks
     {
         public int TaskId { get; set; }
         public string Name { get; set; }
@@ -42,7 +42,7 @@ namespace Redmine.Models
         public string Name { get; set; }
     }
 
-    class ProjectTypeDevelopers
+    class ProjectDeveloper
     {
         public int DeveloperId { get; set; }
         public int ProjectId { get; set; }
@@ -83,11 +83,11 @@ namespace Redmine.Models
             new ProjectType { ProjectTypeId = 2, Name = "Type B" }
         };
 
-        public List<ProjectTypeDevelopers> ProjectTypeDevelopers { get; } = new List<ProjectTypeDevelopers>
+        public List<ProjectDeveloper> ProjectDevelopers { get; } = new List<ProjectDeveloper>
         {
-            new ProjectTypeDevelopers { DeveloperId = 1, ProjectId = 1 },
-            new ProjectTypeDevelopers { DeveloperId = 2, ProjectId = 1 },
-            new ProjectTypeDevelopers { DeveloperId = 1, ProjectId = 2 }
+            new ProjectDeveloper { DeveloperId = 1, ProjectId = 1 },
+            new ProjectDeveloper { DeveloperId = 2, ProjectId = 1 },
+            new ProjectDeveloper { DeveloperId = 1, ProjectId = 2 }
         };
     }
 }
