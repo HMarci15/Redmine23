@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "Ud4vBlkpfApQdESgfFq4GARmc4qKuQBc5KSCmLCS9bs=",
+=======
+  "Hash": "XsHa18josfcZktzbQCIkMdUUA/o7WiEAqYl3zTU2Gq0=",
+>>>>>>> Stashed changes
   "Source": "Redmine",
   "BasePath": "_content/Redmine",
   "Mode": "Default",
@@ -10,13 +14,14 @@
     {
       "Name": "Redmine\\wwwroot",
       "Source": "Redmine",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
+<<<<<<< Updated upstream
       "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\.gitignore",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
@@ -56,9 +61,50 @@
     },
     {
       "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\api.js",
+=======
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\.gitignore",
+>>>>>>> Stashed changes
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "BasePath": "_content/Redmine",
+      "RelativePath": ".gitignore",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\.gitignore"
+    },
+    {
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\addtask.html",
+      "SourceId": "Redmine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "BasePath": "_content/Redmine",
+      "RelativePath": "addtask.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\addtask.html"
+    },
+    {
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\api.js",
+      "SourceId": "Redmine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "api.js",
       "AssetKind": "All",
@@ -74,10 +120,10 @@
       "OriginalItemSpec": "wwwroot\\api.js"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\index.html",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -93,10 +139,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.js",
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\index.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "index.js",
       "AssetKind": "All",
@@ -112,6 +158,7 @@
       "OriginalItemSpec": "wwwroot\\index.js"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\kepek\\searchicon.jpg",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
@@ -170,9 +217,69 @@
     },
     {
       "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.html",
+=======
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\kepek\\searchicon.jpg",
+>>>>>>> Stashed changes
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "BasePath": "_content/Redmine",
+      "RelativePath": "kepek/searchicon.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\kepek\\searchicon.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\list.html",
+      "SourceId": "Redmine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "BasePath": "_content/Redmine",
+      "RelativePath": "list.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\list.html"
+    },
+    {
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\list.js",
+      "SourceId": "Redmine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "BasePath": "_content/Redmine",
+      "RelativePath": "list.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\list.js"
+    },
+    {
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\login.html",
+      "SourceId": "Redmine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "login.html",
       "AssetKind": "All",
@@ -188,10 +295,10 @@
       "OriginalItemSpec": "wwwroot\\login.html"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.js",
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\login.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "login.js",
       "AssetKind": "All",
@@ -207,10 +314,17 @@
       "OriginalItemSpec": "wwwroot\\login.js"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\style.css",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\style.css",
+      "SourceId": "Redmine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+>>>>>>> Stashed changes
       "BasePath": "_content/Redmine",
       "RelativePath": "style.css",
       "AssetKind": "All",
@@ -226,10 +340,17 @@
       "OriginalItemSpec": "wwwroot\\style.css"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\tasks.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+=======
+      "Identity": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\tasks.js",
+      "SourceId": "Redmine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\wwwroot\\",
+>>>>>>> Stashed changes
       "BasePath": "_content/Redmine",
       "RelativePath": "tasks.js",
       "AssetKind": "All",
