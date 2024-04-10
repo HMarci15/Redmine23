@@ -53,9 +53,8 @@ namespace Redmine.Models
 
         public List<Manager> Managers { get; } = new List<Manager>
         {
-            new Manager { ManagerId = 1, Name = "John Doe", Email = "john.doe@example.com", Password = "password123" },
-            new Manager { ManagerId = 2, Name = "Jane Smith", Email = "jane.smith@example.com", Password = "securepassword" },
-             new Manager { ManagerId = 3, Name = "Matyi marci", Email = "string", Password = "string" }
+            new Manager { ManagerId = 1, Name = "Manager1", Email = "manager@manager.com", Password = "asd123" },
+           
         };
 
         public List<Developer> Developers { get; } = new List<Developer>
@@ -67,9 +66,9 @@ namespace Redmine.Models
 
         public List<Tasks> TasksList { get; } = new List<Tasks>
 {
-    new Tasks { TaskId = 1, Name = "Task 1", Description = "Description for Task 1", ProjectId = 1, UserId = 1, DeadLine = DateTime.Now },
-    new Tasks { TaskId = 2, Name = "Task 2", Description = "Description for Task 2", ProjectId = 1, UserId = 2, DeadLine = DateTime.Now },
-    new Tasks { TaskId = 3, Name = "Task 3", Description = "Description for Task 3", ProjectId = 2, UserId = 3, DeadLine = DateTime.Now }
+    new Tasks { TaskId = 1, Name = "Task 1", Description = "Description for Task 1", ProjectId = 1, UserId = 1, DeadLine = DateTime.Now},
+    new Tasks { TaskId = 2, Name = "Task 2", Description = "Description for Task 2", ProjectId = 1, UserId = 1, DeadLine = DateTime.Now },
+    new Tasks { TaskId = 3, Name = "Task 3", Description = "Description for Task 3", ProjectId = 2, UserId = 1, DeadLine = DateTime.Now }
 };
 
         public List<Project> Projects { get; } = new List<Project>

@@ -11,14 +11,14 @@ namespace Redmine.Controllers
     public class ProjectController : ControllerBase
     {
 
-
-
-        // Projekt listázása
-        private readonly SampleData _sampleData;
+       private static SampleData _sampleData;
 
         public ProjectController()
         {
-            _sampleData = new SampleData();
+            if (_sampleData == null)
+            {
+                _sampleData = new SampleData();
+            }
         }
 
 
@@ -79,6 +79,11 @@ namespace Redmine.Controllers
                     ManagerName = GetManagerName(task.UserId)
                 })
                 .ToList();
+
+            foreach (var item in _sampleData.TasksList)
+            {
+                Console.WriteLine("task id: " + item.TaskId + " task name: " + item.Name);
+            }
 
             return Ok(tasks);
         }
@@ -144,12 +149,24 @@ namespace Redmine.Controllers
                 ProjectId = model.ProjectId
                  
             };
-
-               _sampleData.ProjectDevelopers.Add(ProjectDevelopers);
             _sampleData.TasksList.Add(newTask);
+            _sampleData.ProjectDevelopers.Add(ProjectDevelopers);
+            
+
+
+            foreach (var item in _sampleData.ProjectDevelopers)
+            {
+                Console.WriteLine("Dev id: " + item.DeveloperId + " Project id: " + item.ProjectId);
+            }
+            Console.WriteLine("///");
+            foreach (var item in _sampleData.TasksList)
+            {
+                Console.WriteLine("task id: " + item.TaskId + " task name: " + item.Name);
+            }
 
             // Visszaadjuk az elkészült feladatot
             return Ok(newTask);
+
         }
 
 
