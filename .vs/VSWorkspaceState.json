@@ -4,8 +4,8 @@
     "\\Server",
     "\\Server\\Redmine",
     "\\Server\\Redmine\\Redmine",
-    "\\Server\\Redmine\\Redmine\\Models"
+    "\\Server\\Redmine\\Redmine\\Controllers"
   ],
-  "SelectedNode": "\\Server\\Redmine\\Redmine\\Models",
+  "SelectedNode": "\\Server\\Redmine\\Redmine.sln",
   "PreviewInSolutionExplorer": false
 }

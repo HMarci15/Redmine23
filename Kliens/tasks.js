@@ -57,26 +57,62 @@ fetch('http://localhost:5148/Project/Developers')
     }
     return response.json();
   })
-  .then(data => {
-    console.log('Fejlesztők:', data);
+  .then(developers => {
+    console.log('Fejlesztők:', developers);
 
     const developerSelect = document.getElementById('developer');
-
     developerSelect.innerHTML = '';
-
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.textContent = 'Válassz fejlesztőt...';
-    developerSelect.appendChild(defaultOption);
-
-    data.forEach(developer => {
+    developers.forEach(developer => {
       const option = document.createElement('option');
       option.value = developer.developerId;
       option.textContent = developer.name;
       developerSelect.appendChild(option);
     });
+
+    $('#taskForm').submit(function(event) {
+        event.preventDefault();
+        var taskName = $('#taskName').val();
+        var taskDescription = $('#taskDescription').val();
+        var developerId = $('#developer').val();
+        if (taskName.trim() !== '' && taskDescription.trim() !== '' && developerId.trim() !== '') {
+            addTaskToEndpoint(taskName, taskDescription, developerId);
+        }
+    });
   })
   .catch(error => {
-    console.error('Hiba:', error);
+    console.error('Hiba történt a fejlesztők lekérdezése közben:', error);
   });
 
+  function addTaskToEndpoint(taskName, taskDescription, developerId) {
+    var taskName = $('#taskName').val();
+    var taskDescription = $('#taskDescription').val();
+    var developerId = $('#developer').val();
+    const apiUrl = 'http://localhost:5148';
+    const endpoint = `${apiUrl}/Project/${developerId}/task`;
+
+    const data = {
+        taskId: 0,
+        name: taskName,
+        description: taskDescription,
+        projectId: 1,
+        userId: 1,
+        deadLine: new Date().toISOString() 
+    };
+
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(console.log(data));
+        }
+        console.log(console.log(data));
+    })
+    .catch(error => {
+        console.error('Hiba:', error);
+    });
+}
