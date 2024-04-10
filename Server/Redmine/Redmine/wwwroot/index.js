@@ -1,5 +1,4 @@
-const apiUrl = 'http://localhost:5148'; // Az API URL-je, amelyről lekéred az adatokat
-
+const apiUrl = 'http://localhost:5148'; 
 fetch(`${apiUrl}/Project`)
 .then(response => {
     if (!response.ok) {
@@ -15,7 +14,7 @@ fetch(`${apiUrl}/Project`)
 
 function displayProject(task) {
 const tableBody = document.getElementById('taskTableBody');
-tableBody.innerHTML = ''; // Előző sorok törlése (ha voltak)
+tableBody.innerHTML = ''; 
 
 task.forEach((item, index) => {
     const row = `
@@ -25,7 +24,7 @@ task.forEach((item, index) => {
             <td>${item.description}</td>
             <td>${item.projectTypeName}</td>
             <td>
-                <a href="list.html"><button type="button" class="btn btn-primary">Listázás</button></a>
+                <a href="list.html"><button type="button" class="btn btn-primary">Feladatok</button></a>
                 <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
             </td>
         </tr>
@@ -33,40 +32,6 @@ task.forEach((item, index) => {
     `;
     tableBody.innerHTML += row;
 });
-}
-
-// ...
-// if (response.ok) {
-//     const data = await response.json();
-//     // Visszaküldött felhasználónév kiíratása
-//     console.log('Visszaküldött felhasználónév:', data.Username);
-//     // Felhasználónév kiíratása a HTML-be
-//     document.getElementById('loggedInUser').textContent = `Bejelentkezett felhasználó: ${data.Username}`;
-//     // Itt további műveleteket végezhetsz a felhasználónévvel
-// } else {
-//     console.error('Hiba a szerver válaszában:', response.status, response.statusText);
-// }
-// ...
-
-
-//Projektlista lekérdezése
-function getProjects(){
-    //szerveroldali lekérdezés
-    console.log('Projektlista lekérdezése');
-}
-getProjects();
-
-//Feladatok listázása
-function getTasks(projectId){
-    //szerveroldali lekérdezés
-    console.log('Feladatok listázása a következő projekthez:', projectId);
-}
-
-//Új feladat hozzáadása
-function addTask(projectId, taskName, taskDescription, developerId){
-//szerveroldali hozzáadás
-console.log('Új feladat hozáadása:', projectId, taskName, taskDescription, developerId);
-
 }
 
 function searchOnType() {
@@ -88,5 +53,46 @@ function searchOnType() {
     }
 }
 
+document.getElementById("showTasksBtn").addEventListener("click", function() {
+    fetch(`${apiUrl}/Project/deadlineTask`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Hiba a válaszban');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Feladat adatok:', data);
+        displayTasks(data);
+        document.getElementById("showTasksBtn").style.display = "none";
+        document.getElementById("hideTasksBtn").style.display = "inline-block";
+    })
+    .catch(error => console.error('Hiba:', error));
 
+    
+});
 
+document.getElementById("hideTasksBtn").addEventListener("click", function() {
+    document.getElementById("tasksTableContainer").style.display = "none";
+    document.getElementById("hideTasksBtn").style.display = "none";
+    document.getElementById("showTasksBtn").style.display = "inline-block";
+});
+
+function displayTasks(tasks) {
+    const tableBody = document.getElementById('tasksBody');
+    tableBody.innerHTML = ''; 
+
+    tasks.forEach(task => {
+        const row = `
+            <tr>
+                <td>${task.taskId}</td>
+                <td>${task.name}</td>
+                <td>${task.description}</td>
+                <td>${task.date.replace('T', ' ').substring(0, 16)}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+
+    document.getElementById("tasksTableContainer").style.display = "block";
+}

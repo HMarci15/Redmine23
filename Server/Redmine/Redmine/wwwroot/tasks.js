@@ -1,4 +1,3 @@
-// Feladat hozzáadása
 $(document).ready(function() {
     $('#taskForm').submit(function(event) {
         event.preventDefault();
@@ -18,12 +17,10 @@ $(document).ready(function() {
         }
     });
 
-    // Feladat törlése
     $(document).on('click', '.deleteTask', function() {
         $(this).closest('li').remove();
     });
 
-    // Feladat szerkesztése
     $(document).on('click', '.editTask', function() {
         var listItem = $(this).closest('li');
         var taskName = $(this).data('taskName');
@@ -41,7 +38,6 @@ $(document).ready(function() {
         listItem.html(editForm);
     });
 
-    // Feladat szerkesztés mentése
     $(document).on('click', '.saveTask', function() {
         var editedTaskName = $(this).siblings('.editForm').find('.editInput').eq(0).val();
         var editedTaskDescription = $(this).siblings('.editForm').find('.editInput').eq(1).val();
@@ -53,3 +49,70 @@ $(document).ready(function() {
         listItem.html(taskInfo).append(editBtn).append(deleteBtn);
     });
 });
+
+fetch('http://localhost:5148/Project/Developers')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Hiba a válaszban');
+    }
+    return response.json();
+  })
+  .then(developers => {
+    console.log('Fejlesztők:', developers);
+
+    const developerSelect = document.getElementById('developer');
+    developerSelect.innerHTML = '';
+    developers.forEach(developer => {
+      const option = document.createElement('option');
+      option.value = developer.developerId;
+      option.textContent = developer.name;
+      developerSelect.appendChild(option);
+    });
+
+    $('#taskForm').submit(function(event) {
+        event.preventDefault();
+        var taskName = $('#taskName').val();
+        var taskDescription = $('#taskDescription').val();
+        var developerId = $('#developer').val();
+        if (taskName.trim() !== '' && taskDescription.trim() !== '' && developerId.trim() !== '') {
+            addTaskToEndpoint(taskName, taskDescription, developerId);
+        }
+    });
+  })
+  .catch(error => {
+    console.error('Hiba történt a fejlesztők lekérdezése közben:', error);
+  });
+
+  function addTaskToEndpoint(taskName, taskDescription, developerId) {
+    var taskName = $('#taskName').val();
+    var taskDescription = $('#taskDescription').val();
+    var developerId = $('#developer').val();
+    const apiUrl = 'http://localhost:5148';
+    const endpoint = `${apiUrl}/Project/${developerId}/task`;
+
+    const data = {
+        taskId: 0,
+        name: taskName,
+        description: taskDescription,
+        projectId: 1,
+        userId: 1,
+        deadLine: new Date().toISOString() 
+    };
+
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(console.log(data));
+        }
+        console.log(console.log(data));
+    })
+    .catch(error => {
+        console.error('Hiba:', error);
+    });
+}

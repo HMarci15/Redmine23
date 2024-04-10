@@ -1,57 +1,35 @@
-
-
-/*     // Bejelentkezési funkció
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    // Szerveroldali hitelesítés
-    console.log('Bejelentkezési adatok:', username, password);
-
-    // Fetch a végpontra
-    fetch(`${apiUrl}/project/login`, {
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    
+    var url = `http://localhost:5148/Project/login?email=${email}&password=${password}`; 
+    var formData = { 
+        email: email,
+        password: password
+    };
+    
+    fetch(url, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ Email: username, Password: password })
+        body: JSON.stringify(formData),
     })
-    .then(response => response.json())
-    .then(data => {
-        // Itt kezeld a választ (pl. kiírás vagy más feldolgozás)
-        console.log('Válasz a szerverről:', data);
-    })
-    .catch(error => console.error('Hiba:', error));
-});
- */
-
-// Bejelentkezési funkció
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    // Szerveroldali hitelesítés
-    console.log('Bejelentkezési adatok:', username, password);
-
-    try {
-        // Fetch a végpontra
-        const response = await fetch(`${apiUrl}/project/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ Email: username, Password: password })
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            // Visszaküldött felhasználónév kiíratása
-            console.log('Visszaküldött felhasználónév:', data.Username);
-            // Itt további műveleteket végezhetsz a felhasználónévvel
-        } else {
-            console.error('Hiba a szerver válaszában:', response.status, response.statusText);
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-    } catch (error) {
-        console.error('Hiba a fetch során:', error);
-    }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        window.location.href = "index.html";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById("errorMessage").style.display = "block";
+        document.getElementById("password").classList.add("error-input");
+    });
 });
