@@ -135,7 +135,7 @@ namespace Redmine.Controllers
                 Name = model.Name,
                 Description = model.Description,
                 ProjectId = model.ProjectId,
-                UserId = developer.DeveloperId, // Fejlesztő azonosítója
+                UserId = model.UserId, // Fejlesztő azonosítója
                 DeadLine = model.DeadLine
             };
             var ProjectDevelopers = new ProjectDeveloper

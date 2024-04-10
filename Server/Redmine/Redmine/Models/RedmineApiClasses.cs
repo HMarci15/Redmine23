@@ -61,7 +61,8 @@ namespace Redmine.Models
         public List<Developer> Developers { get; } = new List<Developer>
         {
             new Developer { DeveloperId = 1, Name = "Alice", Email = "alice@example.com" },
-            new Developer { DeveloperId = 2, Name = "Bob", Email = "bob@example.com" }
+            new Developer { DeveloperId = 2, Name = "Bob", Email = "bob@example.com" },
+            new Developer { DeveloperId = 3, Name = "Marci", Email = "bob@example.com" }
         };
 
         public List<Tasks> TasksList { get; } = new List<Tasks>
