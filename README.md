@@ -10,4 +10,5 @@
 - A futtatási lehetőségek közül válassza ki a "http"-t
 - Futtassa a programot, hogy elinduljon a szerver
 - Lépjen be a Kliens mappába, majd nyissa meg a login.html-t
-- Bejelentkezéshez használja a következő adatokat: Email-cím: string, Jelszó: string
+- Bejelentkezéshez használja a következő adatokat: Email-cím: manager@manager.com, Jelszó: asd123
+- Ha localhost-ról futtatja, egy hiba miatt kétszer kell beírni a bejelentkezési adatokat
