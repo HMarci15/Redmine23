@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Redmine.data;
 using Redmine.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Redmine.Controllers
 {
@@ -13,13 +15,19 @@ namespace Redmine.Controllers
     public class ProjectController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly JsonSerializerOptions _jsonOptions;
 
         public ProjectController(DataContext context)
         {
             _context = context;
+            _jsonOptions = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve,
+                // Egyéb beállítások, ha szükséges
+            };
         }
 
-
+        
         
 
       //2
@@ -88,72 +96,78 @@ namespace Redmine.Controllers
       }
 
 
-      [HttpPost("{devId}/task")]
-      public ActionResult<Task> CreateTask(int devId, TaskModel model)
-      {
-          // Ellenőrizzük, hogy a projekthez tartozik-e ilyen azonosítójú projekt
-          var project = _context.Projects.FirstOrDefault(p => p.Id == model.ProjectId);
-          if (project == null)
-          {
-              return NotFound("Nem található ilyen azonosítójú projekt.");
-          }
+        [HttpPost("{devId}/task")]
+        public ActionResult<Task> CreateTask(int devId, TaskModel model)
+        {
+            // Ellenőrizzük, hogy a projekthez tartozik-e ilyen azonosítójú projekt
+            var project = _context.Projects.FirstOrDefault(p => p.Id == model.ProjectId);
+            if (project == null)
+            {
+                return NotFound("Nem található ilyen azonosítójú projekt.");
+            }
+            
 
-          // Ellenőrizzük, hogy a fejlesztő létezik-e a rendszerben
-          var developer = _context.Developers.FirstOrDefault(d => d.Id == devId);
-          if (developer == null)
-          {
-              return BadRequest("Nem található ilyen nevű fejlesztő.");
-          }
+            // Ellenőrizzük, hogy a fejlesztő létezik-e a rendszerben
+            var developer = _context.Developers.FirstOrDefault(d => d.Id == devId);
+            if (developer == null)
+            {
+                return BadRequest("Nem található ilyen nevű fejlesztő.");
+            }
+            var isDeveloperAssigned = _context.ProjectDevelopers.Any(pd => pd.DeveloperId == devId && pd.ProjectId == model.ProjectId);
+            if (isDeveloperAssigned)
+            {
+                return Conflict("A megadott fejlesztő már hozzá van rendelve ehhez a projekthez.");
+            }
 
-          // Új feladat létrehozása
-          var newTask = new Task
-          {
-              Id = _context.Tasks.Max(t => t.Id) + 1,
-              Name = model.Name,
-              Description = model.Description,
-              ProjectId = model.ProjectId,
-              ManagerId = model.ManagerId, // Fejlesztő azonosítója
-              Deadline = model.Deadline,
-             
+            // Új feladat létrehozása
+            var newTask = new Task
+            {
+                Id = _context.Tasks.Max(t => t.Id) + 1,
+                Name = model.Name,
+                Description = model.Description,
+                ProjectId = model.ProjectId,
+                ManagerId = model.ManagerId, // Fejlesztő azonosítója
+                Deadline = model.Deadline
+            };
 
-        };
-          var ProjectDevelopers = new ProjectDeveloper
-          {
-              DeveloperId = devId,
-              ProjectId = model.ProjectId
-
-          };
+            var projectDeveloper = new ProjectDeveloper
+            {
+                ProjectId = project.Id,
+                DeveloperId = developer.Id
+            };
+            
+            // Hozzáadjuk az új feladatot a feladatokhoz
             _context.Tasks.Add(newTask);
-            _context.ProjectDevelopers.Add(ProjectDevelopers);
+            _context.ProjectDevelopers.Add(projectDeveloper);
+            // Hozzáadjuk a ProjectDevelopers táblához az új rekordot
+
+
+            // Mentjük a változásokat az adatbázisba
+            _context.SaveChanges();
+
+            var serializedTask = JsonSerializer.Serialize(newTask, _jsonOptions);
+            return Content(serializedTask, "application/json");
+        }
 
 
 
-          
+        // 5        autentikáció
 
-          // Visszaadjuk az elkészült feladatot
-          return Ok(newTask);
+        [HttpGet("selfTask")]
+       public IEnumerable<object> GetSelfTasks()
+       {
+           // Assuming UserId is a string representing developer name
+           var currentUserTasks = _context.Tasks.Where(t => t.ManagerId == 2);
+           return currentUserTasks.Select(task => new { task.Id, task.Name }).ToList();
+       }
 
-      }
-
-
-
-      // 5
-       /*
-      [HttpGet("selfTask")]
-      public IEnumerable<object> GetSelfTasks()
-      {
-          // Assuming UserId is a string representing developer name
-          var currentUserTasks = _sampleData.TasksList.Where(t => t.UserId == 3);
-          return currentUserTasks.Select(task => new { task.TaskId, task.Name }).ToList();
-      }
-
-      // 6
-      [HttpGet("deadlineTask")]
-      public IEnumerable<object> GetDeadlineTasks()
-      {
-          var deadlineTasks = _sampleData.TasksList.Where(t => t.DeadLine.Date == DateTime.Today);
-          return deadlineTasks.Select(task => new { task.TaskId, task.Name, task.Description, task.DeadLine.Date }).ToList();
-      }     */
+       // 6  autentikáció
+       [HttpGet("deadlineTask")]
+       public IEnumerable<object> GetDeadlineTasks()
+       {
+           var deadlineTasks = _context.Tasks.Where(t => t.Deadline.Date == DateTime.Today);
+           return deadlineTasks.Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToList();
+       }     
     }
 
 }

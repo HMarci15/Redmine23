@@ -12,6 +12,7 @@ public class Project
     public int typeId { get; set; }
 
     public string Description { get; set; }
+
         //map 
     [ForeignKey("typeId")]
     public ProjectType Type { get; set; }

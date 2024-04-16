@@ -23,11 +23,10 @@ namespace Redmine.Controllers
         [HttpGet]
         public IActionResult GetProjects()
         {
-            var projects = _context.ProjectDevelopers
+            var projects = _context.Tasks
                 .Select(p => new
                 {
-                    projectName =p.Project.Name,
-                  developerName = p.Developer.Name
+                    alma = p.Project.Type.Name
                 })
                 .ToList();
 
