@@ -1,9 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 public class ProjectType
 {
-    public int ProjectTypeId { get; set; }
-    public string Name { get; set; }
+ 
+    public int Id { get; set; }
 
-    public ICollection<Project> Project { get; set;}
+    public string Name { get; set; }
+    
+    //map
+
+    public List<Project> Projects { get; set; }
 }

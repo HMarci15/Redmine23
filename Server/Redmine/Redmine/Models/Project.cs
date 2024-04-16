@@ -1,12 +1,22 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 public class Project
 {
-    public int ProjectId { get; set; }
+    
+    public int Id { get; set; }
+
     public string Name { get; set; }
-    public int TypeId { get; set; }
+
+    public int typeId { get; set; }
+
     public string Description { get; set; }
-    public ICollection<Task> Tasks { get; set;}
-    public ICollection<ProjectDeveloper> ProjectDeveloper { get; set;  }
-    public ProjectType ProjectType { get; set; }
+        //map 
+    [ForeignKey("typeId")]
+    public ProjectType Type { get; set; }
+
+    public List<Developer> Developers { get; set; }
+
+    public List<Task> Tasks { get; set; }
 }

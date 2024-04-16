@@ -1,9 +1,17 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 public class Developer
 {
-    public int DeveloperId { get; set; }
+    
+    public int Id { get; set; }
+
     public string Name { get; set; }
+
     public string Email { get; set; }
-    public ICollection<ProjectDeveloper> ProjectDevelopers { get; set; }
+
+
+    //map
+
+    public List<Project> Projects { get; set; }
 }
