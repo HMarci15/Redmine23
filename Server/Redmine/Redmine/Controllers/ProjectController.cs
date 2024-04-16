@@ -165,8 +165,16 @@ namespace Redmine.Controllers
        [HttpGet("deadlineTask")]
        public IEnumerable<object> GetDeadlineTasks()
        {
-           var deadlineTasks = _context.Tasks.Where(t => t.Deadline.Date == DateTime.Today);
-           return deadlineTasks.Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToList();
+           var deadlineTasks = _context.Tasks.Where(t => t.Deadline.Date == DateTime.Today.AddDays(10));
+
+            if (deadlineTasks != null)
+            {
+                return deadlineTasks.Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToList();
+            }else
+            {
+                return new List<object> { new { Message = "Nincs elérhető feladat ma." } };
+            }
+           
        }     
     }
 

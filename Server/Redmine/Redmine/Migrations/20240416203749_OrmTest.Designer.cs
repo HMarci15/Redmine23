@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Redmine.data;
 
@@ -10,9 +11,11 @@ using Redmine.data;
 namespace Redmine.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240416203749_OrmTest")]
+    partial class OrmTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
@@ -254,7 +257,7 @@ namespace Redmine.Migrations
                         new
                         {
                             Id = 1,
-                            Deadline = new DateTime(2024, 4, 30, 22, 45, 42, 98, DateTimeKind.Local).AddTicks(1659),
+                            Deadline = new DateTime(2024, 4, 30, 22, 37, 48, 786, DateTimeKind.Local).AddTicks(2214),
                             Description = "Integrate Stripe payment gateway for secure online transactions.",
                             ManagerId = 1,
                             Name = "Implement Payment Gateway",
@@ -263,7 +266,7 @@ namespace Redmine.Migrations
                         new
                         {
                             Id = 2,
-                            Deadline = new DateTime(2024, 4, 26, 22, 45, 42, 98, DateTimeKind.Local).AddTicks(1725),
+                            Deadline = new DateTime(2024, 4, 26, 22, 37, 48, 786, DateTimeKind.Local).AddTicks(2282),
                             Description = "Implement user authentication using JWT for the mobile app.",
                             ManagerId = 2,
                             Name = "User Authentication",
@@ -272,7 +275,7 @@ namespace Redmine.Migrations
                         new
                         {
                             Id = 3,
-                            Deadline = new DateTime(2024, 5, 7, 22, 45, 42, 98, DateTimeKind.Local).AddTicks(1727),
+                            Deadline = new DateTime(2024, 5, 7, 22, 37, 48, 786, DateTimeKind.Local).AddTicks(2284),
                             Description = "Create interactive charts and graphs for visualizing sales data.",
                             ManagerId = 1,
                             Name = "Data Visualization",
@@ -281,7 +284,7 @@ namespace Redmine.Migrations
                         new
                         {
                             Id = 4,
-                            Deadline = new DateTime(2024, 4, 23, 22, 45, 42, 98, DateTimeKind.Local).AddTicks(1729),
+                            Deadline = new DateTime(2024, 4, 23, 22, 37, 48, 786, DateTimeKind.Local).AddTicks(2286),
                             Description = "Allow users to log in using their social media accounts.",
                             ManagerId = 2,
                             Name = "Social Media Login",
