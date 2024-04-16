@@ -4,10 +4,13 @@
     "\\Server",
     "\\Server\\Redmine",
     "\\Server\\Redmine\\Redmine",
-    "\\Server\\Redmine\\Redmine\\Controllers",
-    "\\Server\\Redmine\\Redmine\\Models",
-    "\\Server\\Redmine\\Redmine\\Properties"
+    "\\Server\\Redmine\\Redmine\\data",
+    "\\Server\\Redmine\\Redmine\\db",
+    "\\Server\\Redmine\\Redmine\\Migrations",
+    "\\Server\\Redmine\\Redmine\\Properties",
+    "\\Server\\Redmine\\Redmine\\Services",
+    "\\Server\\Redmine\\Redmine\\wwwroot"
   ],
-  "SelectedNode": "\\Server\\Redmine\\Redmine\\Models\\RedmineApiClasses.cs",
+  "SelectedNode": "\\Server\\Redmine\\Redmine\\Controllers",
   "PreviewInSolutionExplorer": false
 }
