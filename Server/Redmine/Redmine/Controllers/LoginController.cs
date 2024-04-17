@@ -24,7 +24,7 @@ namespace Redmine.Controllers
             if (matchingManager != null)
             {
                 // Ha találtunk egyezést, visszaadjuk a felhasználó nevét
-                return Ok(new { Name = matchingManager.Name });
+                return Ok(new { id = matchingManager.Id, Name = matchingManager.Name });
             }
             else
             {

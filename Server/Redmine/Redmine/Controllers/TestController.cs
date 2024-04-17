@@ -25,7 +25,7 @@ namespace Redmine.Controllers
         {
             var projects = _context.Tasks
                 .Select(p => new
-                {
+                {   projectName = p.Name,
                     alma = p.Project.Type.Name
                 })
                 .ToList();
