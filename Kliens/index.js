@@ -13,18 +13,42 @@ fetch(`${apiUrl}/Project`)
 .catch(error => console.error('Hiba:', error));
 
 window.onload = function() {
-    const name = localStorage.getItem('name'); // Kiolvassuk a nevet
-    const header12 = document.createElement('h1');
-    header12.textContent = `Üdvözöllek, ${name}!`;
+    const nav = document.createElement('nav');
+    nav.classList.add('navbar');
+    nav.classList.add('fixed-top');
+    nav.classList.add('bg-primary');
 
-    header12.style.textAlign = 'center'; // Középre igazítja a szöveget
-    header12.style.padding = '20px'; // Ad egy kis térközt a szöveg körül
-    header12.style.backgroundColor = '#0d6efd'; // Ad egy háttérszínt
-    header12.style.marginBottom = '20px'; // Ad egy kis térközt a fejléc és a többi elem között
-    header12.style.borderRadius = '5px'; // Lekerekíti a széleket
+    const div = document.createElement('div');
+    div.classList.add('container-fluid');
 
-    document.body.insertBefore(header12, document.body.firstChild);
-} 
+    const name = localStorage.getItem('name');
+    const a = document.createElement('a');
+    a.classList.add('navbar-brand');
+    a.innerHTML = `Üdvözlünk, ${name}!`;
+    const form = document.createElement('form');
+    form.classList.add('d-flex');
+
+    const logoutButton = document.createElement('button');
+    logoutButton.textContent = 'Kijelentkezés';
+    logoutButton.classList.add('btn');
+    logoutButton.classList.add('btn-danger');
+    logoutButton.setAttribute("type", "button");
+
+    logoutButton.addEventListener('click', function() {
+        localStorage.removeItem('name'); // Törli a nevet a localStorage-ból
+        window.location.href = 'login.html'; // Átirányítás a login.html oldalra
+    });
+
+    div.appendChild(a);
+    
+    form.appendChild(logoutButton);
+    
+    div.appendChild(form);
+    
+    nav.appendChild(div);
+
+    document.body.insertBefore(nav, document.body.firstChild);
+}
 
 
 function displayProject(task) {
