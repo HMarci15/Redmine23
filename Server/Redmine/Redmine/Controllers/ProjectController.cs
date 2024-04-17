@@ -127,7 +127,7 @@ namespace Redmine.Controllers
                 Description = model.Description,
                 ProjectId = model.ProjectId,
                 ManagerId = model.ManagerId, // Fejlesztő azonosítója
-                Deadline = model.Deadline
+                Deadline = model.Deadline         
             };
 
             var projectDeveloper = new ProjectDeveloper
@@ -153,19 +153,19 @@ namespace Redmine.Controllers
 
         // 5        autentikáció
 
-        [HttpGet("selfTask")]
-       public IEnumerable<object> GetSelfTasks()
+        [HttpGet("{ManId}/selfTask")]
+       public IEnumerable<object> GetSelfTasks(int ManId)
        {
            // Assuming UserId is a string representing developer name
-           var currentUserTasks = _context.Tasks.Where(t => t.ManagerId == 2);
+           var currentUserTasks = _context.Tasks.Where(t => t.ManagerId == ManId);
            return currentUserTasks.Select(task => new { task.Id, task.Name }).ToList();
        }
 
        // 6  autentikáció
-       [HttpGet("deadlineTask")]
-       public IEnumerable<object> GetDeadlineTasks()
+       [HttpGet("{ManId}/deadlineTask")]
+       public IEnumerable<object> GetDeadlineTasks(int ManId)
        {
-           var deadlineTasks = _context.Tasks.Where(t => t.Deadline.Date == DateTime.Today.AddDays(10));
+           var deadlineTasks = _context.Tasks.Where(t => t.Deadline.Date < DateTime.Today.AddDays(100));
 
             if (deadlineTasks != null)
             {
