@@ -12,6 +12,21 @@ fetch(`${apiUrl}/Project`)
 })
 .catch(error => console.error('Hiba:', error));
 
+window.onload = function() {
+    const name = localStorage.getItem('name'); // Kiolvassuk a nevet
+    const header12 = document.createElement('h1');
+    header12.textContent = `Üdvözöllek, ${name}!`;
+
+    header12.style.textAlign = 'center'; // Középre igazítja a szöveget
+    header12.style.padding = '20px'; // Ad egy kis térközt a szöveg körül
+    header12.style.backgroundColor = '#0d6efd'; // Ad egy háttérszínt
+    header12.style.marginBottom = '20px'; // Ad egy kis térközt a fejléc és a többi elem között
+    header12.style.borderRadius = '5px'; // Lekerekíti a széleket
+
+    document.body.insertBefore(header12, document.body.firstChild);
+} 
+
+
 function displayProject(task) {
 const tableBody = document.getElementById('taskTableBody');
 tableBody.innerHTML = ''; 
@@ -19,7 +34,7 @@ tableBody.innerHTML = '';
 task.forEach((item, index) => {
     const row = `
         <tr>
-            <td>${item.projectId}</td>
+            <td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.description}</td>
             <td>${item.projectTypeName}</td>

@@ -25,11 +25,9 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     })
     .then(data => {
         console.log('Success:', data);
-        const name = data.name; // Kiszűrjük a név attribútumot
-        const header = document.createElement('h1'); // Létrehozunk egy új h1 elemet
-        header.textContent = `Üdvözöllek, ${name}!`; // Beállítjuk a fejléc szövegét a név alapján
-        document.body.insertBefore(header, document.body.firstChild); // Beszúrjuk a fejlécet az index.html fájl elejére
-        //window.location.href = "index.html"; // Ez az átirányítást letiltjuk ideiglenesen
+        const name = data.name;
+        localStorage.setItem('name', name); // Tároljuk a nevet
+        window.location.href = "index.html"; // Átirányítás az index.html-re
     })
     
     

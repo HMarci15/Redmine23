@@ -21,10 +21,10 @@ function displayProject(task) {
     task.forEach((item, index) => {
         const row = `
             <tr>
-                <td>${item.taskId}</td>
+                <td>${item.id}</td>
                 <td>${item.name}</td>
                 <td>${item.description}</td>
-                <td>${item.deadLine.replace('T', ' ').substring(0, 16)}</td>
+                <td>${item.deadline.replace('T', ' ').substring(0, 16)}</td>
             </tr>
         `;
         tableBody.innerHTML += row;
