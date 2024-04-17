@@ -63,8 +63,8 @@ task.forEach((item, index) => {
             <td>${item.description}</td>
             <td>${item.projectTypeName}</td>
             <td>
-                <a href="list.html"><button type="button" class="btn btn-primary">Feladatok</button></a>
-                <a href="addtask.html"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
+                <a href="list.html#${item.id}"><button type="button" class="btn btn-primary">Feladatok</button></a>
+                <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
             </td>
         </tr>
 
@@ -93,7 +93,8 @@ function searchOnType() {
 }
 
 document.getElementById("showTasksBtn").addEventListener("click", function() {
-    fetch(`${apiUrl}/Project/deadlineTask`)
+    const managerId = localStorage.getItem('id'); 
+    fetch(`${apiUrl}/Project/${managerId}/deadlineTask`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Hiba a válaszban');

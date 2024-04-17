@@ -64,7 +64,7 @@ fetch('http://localhost:5148/Project/Developers')
     developerSelect.innerHTML = '';
     developers.forEach(developer => {
       const option = document.createElement('option');
-      option.value = developer.developerId;
+      option.value = developer.id;
       option.textContent = developer.name;
       developerSelect.appendChild(option);
     });
@@ -87,16 +87,16 @@ fetch('http://localhost:5148/Project/Developers')
     var taskName = $('#taskName').val();
     var taskDescription = $('#taskDescription').val();
     var developerId = $('#developer').val();
+    const id = parseInt(localStorage.getItem('id'));
     const apiUrl = 'http://localhost:5148';
     const endpoint = `${apiUrl}/Project/${developerId}/task`;
 
     const data = {
-        taskId: 0,
         name: taskName,
         description: taskDescription,
-        projectId: 1,
-        userId: 1,
-        deadLine: new Date().toISOString() 
+        projectId: parseInt(location.href.split('#')[1]),
+        managerId: id,
+        deadline: new Date().toISOString() 
     };
 
     fetch(endpoint, {

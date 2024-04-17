@@ -1,5 +1,5 @@
 const apiUrl = 'http://localhost:5148'; 
-const projectId = 1; 
+const projectId = parseInt(location.href.split('#')[1]); 
 
 fetch(`${apiUrl}/Project/${projectId}/tasks`)
     .then(response => {
