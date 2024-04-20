@@ -92,76 +92,93 @@ function searchOnType() {
     }
 }
 
-document.getElementById("showTasksBtn").addEventListener("click", function() {
-    const managerId = localStorage.getItem('id'); 
-    fetch(`${apiUrl}/Project/${managerId}/deadlineTask`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Hiba a válaszban');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Feladat adatok:', data);
-        displayTasks(data);
-        document.getElementById("showTasksBtn").style.display = "none";
-        document.getElementById("hideTasksBtn").style.display = "inline-block";
-    })
-    .catch(error => console.error('Hiba:', error));
+//deadline task
+document.getElementById("showDeadlineTasksBtn").addEventListener("click", function() {
+  const managerId = localStorage.getItem('id'); 
+  fetch(`${apiUrl}/Project/${managerId}/deadlineTask`)
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Hiba a válaszban');
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('Feladat adatok:', data);
+      displayDeadlineTasks(data);
+      document.getElementById("showDeadlineTasksBtn").style.display = "none";
+      document.getElementById("hideDeadlineTasksBtn").style.display = "inline-block";
+  })
+  .catch(error => console.error('Hiba:', error));
 
-    
 });
 
-document.getElementById("hideTasksBtn").addEventListener("click", function() {
-    document.getElementById("tasksTableContainer").style.display = "none";
-    document.getElementById("hideTasksBtn").style.display = "none";
-    document.getElementById("showTasksBtn").style.display = "inline-block";
+document.getElementById("hideDeadlineTasksBtn").addEventListener("click", function() {
+  document.getElementById("deadlineTasksTableContainer").style.display = "none";
+  document.getElementById("hideDeadlineTasksBtn").style.display = "none";
+  document.getElementById("showDeadlineTasksBtn").style.display = "inline-block";
 });
 
-document.getElementById("selfTasksBtn").addEventListener("click", function() { // Event listener hozzáadása a saját feladatok gombhoz
-    const managerId = localStorage.getItem('id'); 
-    fetch(`${apiUrl}/Project/${managerId}/selfTask`) // Másik végpont hívása
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Hiba a válaszban');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Saját feladatok:', data);
-        displayTasks(data);
-        document.getElementById("selfTasksBtn").style.display = "none";
-        document.getElementById("hideSelfTasksBtn").style.display = "inline-block";
-    })
-    .catch(error => console.error('Hiba:', error));
+//selftask
+document.getElementById("showSelfTasksBtn").addEventListener("click", function() { // Event listener hozzáadása a saját feladatok gombhoz
+  const managerId = localStorage.getItem('id'); 
+  fetch(`${apiUrl}/Project/${managerId}/selfTask`) // Másik végpont hívása
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Hiba a válaszban');
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('Saját feladatok:', data);
+      displaySelfTasks(data);
+      document.getElementById("showSelfTasksBtn").style.display = "none";
+      document.getElementById("hideSelfTasksBtn").style.display = "inline-block";
+  })
+  .catch(error => console.error('Hiba:', error));
 
-    
 });
 
 document.getElementById("hideSelfTasksBtn").addEventListener("click", function() {
-    document.getElementById("tasksTableContainer").style.display = "none";
-    document.getElementById("hideSelfTasksBtn").style.display = "none";
-    document.getElementById("selfTasksBtn").style.display = "inline-block";
+  document.getElementById("selfTasksTableContainer").style.display = "none";
+  document.getElementById("hideSelfTasksBtn").style.display = "none";
+  document.getElementById("showSelfTasksBtn").style.display = "inline-block";
 });
- 
 
 
-function displayTasks(tasks) {
-    const tableBody = document.getElementById('tasksBody');
-    tableBody.innerHTML = ''; 
+function displayDeadlineTasks(tasks) {
+  const tableBody = document.getElementById('deadlineTasksBody');
+  tableBody.innerHTML = ''; 
 
-    tasks.forEach(task => {
-        const row = `
-            <tr>
-                <td>${task.taskId}</td>
-                <td>${task.name}</td>
-                <td>${task.description}</td>
-                <td>${task.date.replace('T', ' ').substring(0, 16)}</td>
-            </tr>
-        `;
-        tableBody.innerHTML += row;
-    });
+  tasks.forEach(task => {
+      const row = `
+          <tr>
+              <td>${task.taskId}</td>
+              <td>${task.name}</td>
+              <td>${task.description}</td>
+              <td>${task.date.replace('T', ' ').substring(0, 16)}</td>
+          </tr>
+      `;
+      tableBody.innerHTML += row;
+  });
 
-    document.getElementById("tasksTableContainer").style.display = "block";
+  document.getElementById("deadlineTasksTableContainer").style.display = "block";
 }
 
+function displaySelfTasks(tasks) {
+  const tableBody = document.getElementById('selfTasksBody');
+  tableBody.innerHTML = ''; 
+
+  tasks.forEach(task => {
+      const row = `
+          <tr>
+              <td>${task.taskId}</td>
+              <td>${task.name}</td>
+              <td>${task.description}</td>
+              <td>${task.date.replace('T', ' ').substring(0, 16)}</td>
+          </tr>
+      `;
+      tableBody.innerHTML += row;
+  });
+
+  document.getElementById("selfTasksTableContainer").style.display = "block";
+}

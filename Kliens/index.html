@@ -33,8 +33,8 @@
     
     </table>
 
-    <div id="tasksTableContainer" style="display: none;">
-    <h1 class="text-center my-4">Közeli Határidős Feladatok</h1>
+    <div id="deadlineTasksTableContainer" style="display: none;"> <!-- Külön container a Közeli Határidős Feladatokhoz -->
+      <h1 id="deadlineTasksTitle" class="text-center my-4">Közeli Határidős Feladatok</h1> <!-- Külön cím a Közeli Határidős Feladatokhoz -->
       <table class="table table-dark">
           <thead>
               <tr>
@@ -44,15 +44,31 @@
                   <th>Feladat határideje</th>
               </tr>
           </thead>
-          <tbody id="tasksBody">
+          <tbody id="deadlineTasksBody">
+          </tbody>
+      </table>
+  </div>
+
+  <div id="selfTasksTableContainer" style="display: none;"> <!-- Külön container a Saját Feladatokhoz -->
+      <h1 id="selfTasksTitle" class="text-center my-4">Saját Feladatok</h1> <!-- Külön cím a Saját Feladatokhoz -->
+      <table class="table table-dark">
+          <thead>
+              <tr>
+                  <th>Feladat azonosítója</th>
+                  <th>Feladat neve</th>
+                  <th>Feladat leírása</th>
+                  <th>Feladat határideje</th>
+              </tr>
+          </thead>
+          <tbody id="selfTasksBody">
           </tbody>
       </table>
   </div>
     
-  <button id="showTasksBtn" class="btn btn-primary">Közeli Határidős Feladatok Megjelenítése</button>
-  <button id="selfTasksBtn" class="btn btn-primary">Saját feladatok megjelenítése</button> 
-  <button id="hideTasksBtn" class="btn btn-secondary" style="display: none;">Elrejtés</button>
-  <button id="hideSelfTasksBtn" class="btn btn-secondary" style="display: none;">Elrejtés</button>
+  <button id="showDeadlineTasksBtn" class="btn btn-primary">Közeli határidős feladatok megjelenítése</button>
+  <button id="showSelfTasksBtn" class="btn btn-primary">Saját feladatok megjelenítése</button> 
+  <button id="hideDeadlineTasksBtn" class="btn btn-secondary" style="display: none;">Közeli határidős feladatok elrejtése</button>
+  <button id="hideSelfTasksBtn" class="btn btn-secondary" style="display: none;">Saját feladatok elrejtése</button>
        
 
 </div>
