@@ -158,7 +158,7 @@ namespace Redmine.Controllers
        {
            // Assuming UserId is a string representing developer name
            var currentUserTasks = _context.Tasks.Where(t => t.ManagerId == ManId);
-           return currentUserTasks.Select(task => new { task.Id, task.Name }).ToList();
+           return currentUserTasks.Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date}).ToList();
        }
 
        // 6  autentikáció
