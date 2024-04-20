@@ -24,7 +24,7 @@ function displayProject(task) {
                 <td>${item.id}</td>
                 <td>${item.name}</td>
                 <td>${item.description}</td>
-                <td>${item.deadline.replace('T', ' ').substring(0, 16)}</td>
+                <td>${item.deadline.replace('T', ' ').substring(0, 10)}</td>
             </tr>
         `;
         tableBody.innerHTML += row;

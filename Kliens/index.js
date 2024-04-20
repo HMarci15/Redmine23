@@ -50,28 +50,34 @@ window.onload = function() {
     document.body.insertBefore(nav, document.body.firstChild);
 }
 
-
 function displayProject(task) {
-const tableBody = document.getElementById('taskTableBody');
-tableBody.innerHTML = ''; 
+    const tableBody = document.getElementById('taskTableBody');
+    tableBody.innerHTML = ''; 
 
-task.forEach((item, index) => {
-    const row = `
-        <tr>
-            <td>${item.id}</td>
-            <td>${item.name}</td>
-            <td>${item.description}</td>
-            <td>${item.projectTypeName}</td>
-            <td>
-                <a href="list.html#${item.id}"><button type="button" class="btn btn-primary">Feladatok</button></a>
-                <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
-            </td>
-        </tr>
-
-    `;
-    tableBody.innerHTML += row;
-});
+    task.forEach((item, index) => {
+        const row = `
+            <tr>
+                <td>${item.id}</td>
+                <td>${item.name}</td>
+                <td>${item.description}</td>
+                <td>${item.projectTypeName}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="list.html#${item.id}"><button type="button" class="btn btn-primary">Feladatok</button></a>
+                        <span style="margin-right: 5px;"></span> <!-- Üres span elem a gombok között -->
+                        <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
+                    </div>
+                </td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
 }
+
+
+
+
+
 
 function searchOnType() {
     var input, filter, table, tr, td, i, txtValue;
@@ -152,10 +158,10 @@ function displayDeadlineTasks(tasks) {
   tasks.forEach(task => {
       const row = `
           <tr>
-              <td>${task.taskId}</td>
+              <td>${task.id}</td>
               <td>${task.name}</td>
               <td>${task.description}</td>
-              <td>${task.date.replace('T', ' ').substring(0, 16)}</td>
+              <td>${task.date.replace('T', ' ').substring(0, 10)}</td>
           </tr>
       `;
       tableBody.innerHTML += row;
@@ -171,10 +177,10 @@ function displaySelfTasks(tasks) {
   tasks.forEach(task => {
       const row = `
           <tr>
-              <td>${task.taskId}</td>
+              <td>${task.id}</td>
               <td>${task.name}</td>
               <td>${task.description}</td>
-              <td>${task.date.replace('T', ' ').substring(0, 16)}</td>
+              <td>${task.date.replace('T', ' ').substring(0, 10)}</td>
           </tr>
       `;
       tableBody.innerHTML += row;
