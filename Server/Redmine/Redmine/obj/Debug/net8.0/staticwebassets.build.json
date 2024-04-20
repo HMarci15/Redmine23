@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ud4vBlkpfApQdESgfFq4GARmc4qKuQBc5KSCmLCS9bs=",
+  "Hash": "M9fiYsgRdQVVhLts0npIbtghNXlbasptG5TpcwsYJbM=",
   "Source": "Redmine",
   "BasePath": "_content/Redmine",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Redmine\\wwwroot",
       "Source": "Redmine",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\.gitignore",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\.gitignore",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": ".gitignore",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\.gitignore"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\addtask.html",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\addtask.html",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "addtask.html",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\addtask.html"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\api.js",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\api.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "api.js",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\api.js"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.html",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.js",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\index.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "index.js",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\index.js"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\kepek\\searchicon.jpg",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\kepek\\searchicon.jpg",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "kepek/searchicon.jpg",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\kepek\\searchicon.jpg"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\list.html",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\list.html",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "list.html",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\list.html"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\list.js",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\list.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "list.js",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\list.js"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.html",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.html",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "login.html",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\login.html"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.js",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\login.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "login.js",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\login.js"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\style.css",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\style.css",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "style.css",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\style.css"
     },
     {
-      "Identity": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\tasks.js",
+      "Identity": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\tasks.js",
       "SourceId": "Redmine",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\wwwroot\\",
       "BasePath": "_content/Redmine",
       "RelativePath": "tasks.js",
       "AssetKind": "All",

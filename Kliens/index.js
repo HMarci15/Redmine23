@@ -118,6 +118,34 @@ document.getElementById("hideTasksBtn").addEventListener("click", function() {
     document.getElementById("showTasksBtn").style.display = "inline-block";
 });
 
+document.getElementById("selfTasksBtn").addEventListener("click", function() { // Event listener hozzáadása a saját feladatok gombhoz
+    const managerId = localStorage.getItem('id'); 
+    fetch(`${apiUrl}/Project/${managerId}/selfTask`) // Másik végpont hívása
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Hiba a válaszban');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Saját feladatok:', data);
+        displayTasks(data);
+        document.getElementById("selfTasksBtn").style.display = "none";
+        document.getElementById("hideSelfTasksBtn").style.display = "inline-block";
+    })
+    .catch(error => console.error('Hiba:', error));
+
+    
+});
+
+document.getElementById("hideSelfTasksBtn").addEventListener("click", function() {
+    document.getElementById("tasksTableContainer").style.display = "none";
+    document.getElementById("hideSelfTasksBtn").style.display = "none";
+    document.getElementById("selfTasksBtn").style.display = "inline-block";
+});
+ 
+
+
 function displayTasks(tasks) {
     const tableBody = document.getElementById('tasksBody');
     tableBody.innerHTML = ''; 
@@ -136,3 +164,4 @@ function displayTasks(tasks) {
 
     document.getElementById("tasksTableContainer").style.display = "block";
 }
+
