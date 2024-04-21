@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XraH+MwbonpiTiiJTuUzYeBtbFNk7L5rVRHspe2VHI2Q47fKQpmeX1umrzz5J5flFXbdE+5/uMjCpLR716F0Wg==",
+  "dgSpecHash": "FoIs38e//5nP0HHqsdJRz8awh+ZjwaJZifHipVh6uABRnLvye72cMyNe2iUW3lPVBpZyT5J7J2eueQbvljuHmw==",
   "success": true,
-  "projectFilePath": "D:\\github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj",
+  "projectFilePath": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\Redmine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\csong\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\csong\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",

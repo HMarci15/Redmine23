@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj": {}
+    "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\Redmine.csproj": {}
   },
   "projects": {
-    "D:\\github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj": {
+    "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\Redmine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj",
+        "projectUniqueName": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\Redmine.csproj",
         "projectName": "Redmine",
-        "projectPath": "D:\\github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj",
+        "projectPath": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\Redmine.csproj",
         "packagesPath": "C:\\Users\\csong\\.nuget\\packages\\",
-        "outputPath": "D:\\github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\obj\\",
+        "outputPath": "C:\\Users\\csong\\OneDrive\\Dokumentumok\\GitHub\\Server\\Redmine\\Redmine\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\csong\\AppData\\Roaming\\NuGet\\NuGet.Config",

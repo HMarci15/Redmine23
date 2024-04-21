@@ -98,7 +98,6 @@ D:\Redmine23\Server\Redmine\Redmine\obj\Debug\net8.0\Redmine.csproj.Up2Date
 D:\Redmine23\Server\Redmine\Redmine\obj\Debug\net8.0\Redmine.genruntimeconfig.cache
 D:\Redmine23\Server\Redmine\Redmine\obj\Debug\net8.0\ref\Redmine.dll
 D:\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Redmine.staticwebassets.runtime.json
-C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Redmine.staticwebassets.runtime.json
 C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\EntityFramework.SqlServer.dll
 C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\EntityFramework.dll
 C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Humanizer.dll
@@ -1122,3 +1121,11 @@ D:\github_redmine\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.Id
 D:\github_redmine\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\github_redmine\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\github_redmine\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
