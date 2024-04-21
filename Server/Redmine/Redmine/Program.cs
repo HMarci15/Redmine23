@@ -1,16 +1,23 @@
-using Redmine.data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-
-
-
-
+using Microsoft.IdentityModel.Tokens;
+using Redmine.data;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Titkos kulcs a JWT token aláírásához
+var secretKey = "bOblvLAvqTbsZJQy6oynX8ICePrkHlvFZxAc7DGLdhTm1HYO3U4gQiSWRMB3PuG7";
 
 builder.Services.AddDbContext<DataContext>(options =>
-options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddCors(options =>
 {
@@ -22,25 +29,73 @@ builder.Services.AddCors(options =>
                    .AllowAnyHeader();
         });
 });
+
+// AUTENTIKACIO
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, jwtBearerOptions =>
+{
+    jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.FromMinutes(5) // Token érvényességi ideje
+    };
+});
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Enter Token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+          new OpenApiSecurityScheme
+          {
+              Reference = new OpenApiReference {
+                  Type = ReferenceType.SecurityScheme,
+                  Id = "Bearer"
+              }
+          },
+
+          new string[]{ }
+        }
+    });
+
+
+});
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-   
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}     
+}
 
 app.UseDefaultFiles(); // Az alapértelmezett fájlok használatához
 app.UseStaticFiles();
-
-
 
 app.UseCors("AllowAnyOrigin");
 app.UseHttpsRedirection();
