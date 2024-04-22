@@ -27,8 +27,9 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         console.log('Success:', data);
         const name = data.name;
         const token = data.token;
-        localStorage.setItem('token', token);
-        localStorage.setItem('name', name); // Tároljuk a nevet
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('name', name); // Tároljuk a nevet
+        console.log(localStorage.getItem('token'));
         window.location.href = "index.html"; // Átirányítás az index.html-re
     })
     

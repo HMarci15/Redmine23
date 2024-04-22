@@ -217,7 +217,7 @@ namespace Redmine.Controllers
             }
             var deadlineTasks =  _context.Tasks
                 .Where(t => t.Deadline.Date < DateTime.Today.AddDays(3)&& t.ManagerId == managerId )
-                .Select(task => new { task.Id, task.Name, task.Description, Deadline = task.Deadline.Date })
+                .Select(task => new { task.Id, task.Name, task.Description, date = task.Deadline.Date })
                 .ToList();
 
             if (deadlineTasks.Any())

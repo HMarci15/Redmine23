@@ -1,10 +1,10 @@
 const apiUrl = 'http://localhost:5148'; 
 const projectId = parseInt(location.href.split('#')[1]); 
-
+const token = sessionStorage.getItem('token');
 fetch(`${apiUrl}/Project/${projectId}/tasks`, {
     method: 'GET',
     headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+        'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json'
     }
 })

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Redmine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf14d16cc246d61748940253fc14dbda7eb9caa2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fbaa53fc3675785c0fce8f73c055dd8d2779d79")]
 [assembly: System.Reflection.AssemblyProductAttribute("Redmine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Redmine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

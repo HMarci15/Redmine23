@@ -1,8 +1,16 @@
 const apiUrl = 'http://localhost:5148'; 
+const token = sessionStorage.getItem('token');
+const UserName = sessionStorage.getItem('name');
+if (!token) {
+    console.error('Nincs token a localStorage-ban');
+    // Itt valószínűleg valamilyen további kezelést kell végrehajtani
+}
+
+
 fetch(`${apiUrl}/Project`,{
     method: 'GET',
     headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+        'Authorization': 'Bearer ' + token ,
         'Content-Type': 'application/json'
     }
 })
@@ -30,7 +38,7 @@ window.onload = function() {
     const name = localStorage.getItem('name');
     const a = document.createElement('a');
     a.classList.add('navbar-brand');
-    a.innerHTML = `Üdvözlünk, ${name}!`;
+    a.innerHTML = `Üdvözlünk, ${UserName}!`;
     const form = document.createElement('form');
     form.classList.add('d-flex');
 
@@ -40,8 +48,8 @@ window.onload = function() {
     logoutButton.classList.add('btn-danger');
     logoutButton.setAttribute("type", "button");
 
-    logoutButton.addEventListener('click', function() {
-        localStorage.removeItem('name'); // Törli a nevet a localStorage-ból
+    logoutButton.addEventListener('click', function () {
+        sessionStorage.clear(); // Törli a nevet a localStorage-ból
         window.location.href = 'login.html'; // Átirányítás a login.html oldalra
     });
 
@@ -107,7 +115,13 @@ function searchOnType() {
 //deadline task
 document.getElementById("showDeadlineTasksBtn").addEventListener("click", function() {
    
-  fetch(`${apiUrl}/Project/deadlineTask`)
+    fetch(`${apiUrl}/Project/deadlineTask`,{
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    })
   .then(response => {
       if (!response.ok) {
           throw new Error('Hiba a válaszban');
@@ -133,7 +147,13 @@ document.getElementById("hideDeadlineTasksBtn").addEventListener("click", functi
 //selftask
 document.getElementById("showSelfTasksBtn").addEventListener("click", function() { // Event listener hozzáadása a saját feladatok gombhoz
    
-  fetch(`${apiUrl}/Project/selfTask`) // Másik végpont hívása
+    fetch(`${apiUrl}/Project/selfTask`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    }) // Másik végpont hívása
   .then(response => {
       if (!response.ok) {
           throw new Error('Hiba a válaszban');

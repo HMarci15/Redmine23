@@ -1,8 +1,9 @@
-$(document).ready(function() {
+const token = sessionStorage.getItem('token');
+$(document).ready(function () {
     fetch('http://localhost:5148/Project/Developers', {
-        method: 'POST',
+        method: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json'
         }
     })
@@ -56,7 +57,7 @@ function addTaskToEndpoint(taskName, taskDescription, developerId, taskDeadline)
     fetch(endpoint, {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json', 
 
         },
