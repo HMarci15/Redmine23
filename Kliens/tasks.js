@@ -17,7 +17,6 @@ $(document).ready(function () {
             console.log('Fejlesztők:', developers);
 
             const developerSelect = document.getElementById('developer');
-            developerSelect.innerHTML = '';
             developers.forEach(developer => {
                 const option = document.createElement('option');
                 option.value = developer.id;
@@ -42,7 +41,6 @@ $(document).ready(function () {
 });
 
 function addTaskToEndpoint(taskName, taskDescription, developerId, taskDeadline) {
-    //const id = parseInt(localStorage.getItem('id'));
     const apiUrl = 'http://localhost:5148';
     const endpoint = `${apiUrl}/Project/${developerId}/task`;
 
@@ -69,6 +67,10 @@ function addTaskToEndpoint(taskName, taskDescription, developerId, taskDeadline)
         }
         console.log(console.log(data));
         alert('Feladat hozzáadása sikeres!');
+        // Sikeres hozzáadás után töröljük az input mezőkben lévő szövegeket
+        $('#taskName').val('');
+        $('#taskDescription').val('');
+        $('#taskDeadline').val('');
     })
     .catch(error => {
         console.error('Hiba:', error);
