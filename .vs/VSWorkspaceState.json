@@ -5,6 +5,7 @@
     "\\Server\\Redmine",
     "\\Server\\Redmine\\Redmine",
     "\\Server\\Redmine\\Redmine\\Controllers",
+    "\\Server\\Redmine\\Redmine\\data",
     "\\Server\\Redmine\\Redmine\\db",
     "\\Server\\Redmine\\Redmine\\Properties",
     "\\Server\\Redmine\\Redmine\\Services"

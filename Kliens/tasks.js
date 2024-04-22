@@ -1,4 +1,7 @@
 const token = sessionStorage.getItem('token');
+if (!token) {
+    window.location.href = './login.html';
+}
 $(document).ready(function () {
     fetch('http://localhost:5148/Project/Developers', {
         method: 'GET',

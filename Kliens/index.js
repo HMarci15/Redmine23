@@ -3,6 +3,7 @@ const token = sessionStorage.getItem('token');
 const UserName = sessionStorage.getItem('name');
 if (!token) {
     console.error('Nincs token a localStorage-ban');
+    window.location.href = './login.html';
     // Itt valószínűleg valamilyen további kezelést kell végrehajtani
 }
 
