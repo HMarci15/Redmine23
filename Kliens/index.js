@@ -106,8 +106,8 @@ function searchOnType() {
 
 //deadline task
 document.getElementById("showDeadlineTasksBtn").addEventListener("click", function() {
-  const managerId = localStorage.getItem('id'); 
-  fetch(`${apiUrl}/Project/${managerId}/deadlineTask`)
+   
+  fetch(`${apiUrl}/Project/deadlineTask`)
   .then(response => {
       if (!response.ok) {
           throw new Error('Hiba a válaszban');
@@ -132,8 +132,8 @@ document.getElementById("hideDeadlineTasksBtn").addEventListener("click", functi
 
 //selftask
 document.getElementById("showSelfTasksBtn").addEventListener("click", function() { // Event listener hozzáadása a saját feladatok gombhoz
-  const managerId = localStorage.getItem('id'); 
-  fetch(`${apiUrl}/Project/${managerId}/selfTask`) // Másik végpont hívása
+   
+  fetch(`${apiUrl}/Project/selfTask`) // Másik végpont hívása
   .then(response => {
       if (!response.ok) {
           throw new Error('Hiba a válaszban');
