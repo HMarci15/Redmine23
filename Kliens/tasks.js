@@ -41,7 +41,7 @@ $(document).ready(function() {
 });
 
 function addTaskToEndpoint(taskName, taskDescription, developerId, taskDeadline) {
-    const id = parseInt(localStorage.getItem('id'));
+    //const id = parseInt(localStorage.getItem('id'));
     const apiUrl = 'http://localhost:5148';
     const endpoint = `${apiUrl}/Project/${developerId}/task`;
 
@@ -49,7 +49,7 @@ function addTaskToEndpoint(taskName, taskDescription, developerId, taskDeadline)
         name: taskName,
         description: taskDescription,
         projectId: parseInt(location.href.split('#')[1]),
-        managerId: id,
+        managerId: 0,
         deadline: taskDeadline
     };
 
