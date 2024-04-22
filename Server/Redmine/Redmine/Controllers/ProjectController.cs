@@ -1,12 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Redmine.data;
 using Redmine.Models;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Data.Entity;
 
 namespace Redmine.Controllers
 {
@@ -31,10 +37,12 @@ namespace Redmine.Controllers
         
 
       //2
+
       [HttpGet]
-      public IActionResult GetProjects()
+        [Authorize]
+      public async Task<IActionResult> GetProjects()
       {
-          var projects = _context.Projects
+          var projects = await _context.Projects
               .Select(project => new
               {
                   project.Id,
@@ -42,18 +50,19 @@ namespace Redmine.Controllers
                   project.Description,
                   ProjectTypeName = project.Type.Name
               })
-              .ToList();
+              .ToListAsync();
 
           return Ok(projects);
       }
       
 
       //3
-
+      
       [HttpGet("/project/{projectId}/tasks")]
-      public IActionResult GetProjectTasks(int projectId)
+        [Authorize]
+        public async Task<IActionResult> GetProjectTasks(int projectId)
       {
-          var tasks = _context.Tasks
+          var tasks = await _context.Tasks
               .Where(task => task.ProjectId == projectId)
               .Select(task => new
               {
@@ -63,7 +72,7 @@ namespace Redmine.Controllers
                   task.Deadline,
                   ManagerName = task.Manager.Name
               })
-              .ToList();
+              .ToListAsync();
 
           
 
@@ -87,33 +96,34 @@ namespace Redmine.Controllers
       // 4 put + get
 
       [HttpGet("Developers")]
-      public IActionResult getDevelopers()
+        [Authorize]
+      public async Task<IActionResult> getDevelopers()
       {
           // Assuming UserId is a string representing developer name
-          var dev = _context.Developers.Select(dev => new { dev.Id,dev.Name }).ToList();
+          var dev = await _context.Developers.Select(dev => new { dev.Id,dev.Name }).ToListAsync();
 
           return Ok(dev);
       }
 
 
         [HttpPost("{devId}/task")]
-        public ActionResult<Task> CreateTask(int devId, TaskModel model)
+        [Authorize]
+        public async Task<ActionResult<Task>> CreateTask(int devId, TaskModel model)
         {
             // Ellenőrizzük, hogy a projekthez tartozik-e ilyen azonosítójú projekt
-            var project = _context.Projects.FirstOrDefault(p => p.Id == model.ProjectId);
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == model.ProjectId);
             if (project == null)
             {
                 return NotFound("Nem található ilyen azonosítójú projekt.");
             }
-            
 
             // Ellenőrizzük, hogy a fejlesztő létezik-e a rendszerben
-            var developer = _context.Developers.FirstOrDefault(d => d.Id == devId);
+            var developer = await _context.Developers.FirstOrDefaultAsync(d => d.Id == devId);
             if (developer == null)
             {
                 return BadRequest("Nem található ilyen nevű fejlesztő.");
             }
-            var isDeveloperAssigned = _context.ProjectDevelopers.Any(pd => pd.DeveloperId == devId && pd.ProjectId == model.ProjectId);
+            var isDeveloperAssigned = await _context.ProjectDevelopers.AnyAsync(pd => pd.DeveloperId == devId && pd.ProjectId == model.ProjectId);
             if (isDeveloperAssigned)
             {
                 return Conflict("A megadott fejlesztő már hozzá van rendelve ehhez a projekthez.");
@@ -127,7 +137,7 @@ namespace Redmine.Controllers
                 Description = model.Description,
                 ProjectId = model.ProjectId,
                 ManagerId = model.ManagerId, // Fejlesztő azonosítója
-                Deadline = model.Deadline         
+                Deadline = model.Deadline
             };
 
             var projectDeveloper = new ProjectDeveloper
@@ -135,15 +145,13 @@ namespace Redmine.Controllers
                 ProjectId = project.Id,
                 DeveloperId = developer.Id
             };
-            
-            // Hozzáadjuk az új feladatot a feladatokhoz
-            _context.Tasks.Add(newTask);
-            _context.ProjectDevelopers.Add(projectDeveloper);
-            // Hozzáadjuk a ProjectDevelopers táblához az új rekordot
 
+            // Hozzáadjuk az új feladatot a feladatokhoz
+            await _context.Tasks.AddAsync(newTask);
+            await _context.ProjectDevelopers.AddAsync(projectDeveloper);
 
             // Mentjük a változásokat az adatbázisba
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             var serializedTask = JsonSerializer.Serialize(newTask, _jsonOptions);
             return Content(serializedTask, "application/json");
@@ -153,12 +161,13 @@ namespace Redmine.Controllers
 
         // 5        autentikáció
 
-        [HttpGet("{ManId}/selfTask")]
-       public IEnumerable<object> GetSelfTasks(int ManId)
+        [HttpGet("selfTask")]
+        [Authorize]
+       public  async Task<ActionResult> GetSelfTasks()
        {
            // Assuming UserId is a string representing developer name
-           var currentUserTasks = _context.Tasks.Where(t => t.ManagerId == ManId);
-           return currentUserTasks.Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date}).ToList();
+           var currentUserTasks = await _context.Tasks.Where(t => t.ManagerId == ManId);
+            return ok(currentUserTasks.Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToListAsync());
        }
 
        // 6  autentikáció

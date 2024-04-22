@@ -1,6 +1,14 @@
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Redmine.data;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Redmine.Controllers
 {
@@ -9,28 +17,47 @@ namespace Redmine.Controllers
     public class LoginController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly string secretKey;
 
         public LoginController(DataContext context)
         {
             _context = context;
+            secretKey = "bOblvLAvqTbsZJQy6oynX8ICePrkHlvFZxAc7DGLdhTm1HYO3U4gQiSWRMB3PuG7";
         }
 
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            // Ellenõrzés, hogy a felhasználónév és jelszó megtalálható-e a listában
-            var matchingManager = _context.Managers.FirstOrDefault(d => d.Email == email && d.Password == password);
+            var foundManager = await _context.Managers.FirstOrDefaultAsync(m => m.Email == email && m.Password == password);
 
-            if (matchingManager != null)
+            if (foundManager == null)
             {
-                // Ha találtunk egyezést, visszaadjuk a felhasználó nevét
-                return Ok(new { id = matchingManager.Id, Name = matchingManager.Name });
+                return Unauthorized();
             }
-            else
+
+            var token = GenerateToken(foundManager);
+            return Ok(new { token,foundManager.Name });
+        }
+
+        private string GenerateToken(Manager manager)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(secretKey);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                // Ha nem találtunk egyezést, hibaüzenetet adunk vissza
-                return BadRequest("Hibás Email vagy jelszó.");
-            }
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, manager.Id.ToString()),
+                    new Claim(ClaimTypes.Name, manager.Name),
+                    // Ide adhatod hozzá a további szükséges adatokat
+                }),
+                Expires = DateTime.UtcNow.AddHours(1), // Token érvényességi ideje
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }
