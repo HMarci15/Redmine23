@@ -337,7 +337,6 @@ C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net
 C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\libman.json
 C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\appsettings.json
-C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Redmine.staticwebassets.runtime.json
 C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\libman.json
 C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Redmine.exe
 C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Redmine.deps.json
@@ -1129,3 +1128,11 @@ C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net
 C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\csong\OneDrive\Dokumentumok\GitHub\Server\Redmine\Redmine\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Marci\Documents\GitHub\Redmine23\Server\Redmine\Redmine\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

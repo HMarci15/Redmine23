@@ -1,5 +1,11 @@
 $(document).ready(function() {
-    fetch('http://localhost:5148/Project/Developers')
+    fetch('http://localhost:5148/Project/Developers', {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Hiba a válaszban');
@@ -50,7 +56,9 @@ function addTaskToEndpoint(taskName, taskDescription, developerId, taskDeadline)
     fetch(endpoint, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json', 
+
         },
         body: JSON.stringify(data)
     })

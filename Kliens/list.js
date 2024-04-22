@@ -1,7 +1,13 @@
 const apiUrl = 'http://localhost:5148'; 
 const projectId = parseInt(location.href.split('#')[1]); 
 
-fetch(`${apiUrl}/Project/${projectId}/tasks`)
+fetch(`${apiUrl}/Project/${projectId}/tasks`, {
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+    }
+})
     .then(response => {
         if (!response.ok) {
             throw new Error('Hiba a válaszban');

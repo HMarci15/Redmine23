@@ -1,5 +1,11 @@
 const apiUrl = 'http://localhost:5148'; 
-fetch(`${apiUrl}/Project`)
+fetch(`${apiUrl}/Project`,{
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+    }
+})
 .then(response => {
     if (!response.ok) {
         throw new Error('Hiba a válaszban');
