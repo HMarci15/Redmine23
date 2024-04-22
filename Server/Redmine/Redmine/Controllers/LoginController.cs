@@ -26,6 +26,7 @@ namespace Redmine.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(string email, string password)
         {
             var foundManager = await _context.Managers.FirstOrDefaultAsync(m => m.Email == email && m.Password == password);

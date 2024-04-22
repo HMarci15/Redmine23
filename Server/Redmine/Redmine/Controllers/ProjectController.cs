@@ -33,46 +33,54 @@ namespace Redmine.Controllers
             };
         }
 
-        
-        
 
-      //2
 
-      [HttpGet]
+
+        //2
+
+        [HttpGet]
         [Authorize]
-      public async Task<IActionResult> GetProjects()
+        public IActionResult GetProjects()
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
             {
                 return Unauthorized(new { message = "Unauthorized" });
             }
-            var projects = await _context.Projects
-              .Select(project => new
-              {
-                  project.Id,
-                  project.Name,
-                  project.Description,
-                  ProjectTypeName = project.Type.Name
-              })
-              .ToListAsync();
 
-          return Ok(projects);
-      }
-      
+            var projects = _context.Projects
+                .Select(project => new
+                {
+                    project.Id,
+                    project.Name,
+                    project.Description,
+                    ProjectTypeName = project.Type.Name
+                })
+                .ToList();
 
-      //3
-      
-      [HttpGet("/project/{projectId}/tasks")]
+            if (projects.Any())
+            {
+                return Ok(projects);
+            }
+            else
+            {
+                return NotFound(new { Message = "Nincs elérhető projekt." });
+            }
+        }
+
+
+        //3
+
+        [HttpGet("/project/{projectId}/tasks")]
         [Authorize]
-        public async Task<IActionResult> GetProjectTasks(int projectId)
+        public IActionResult GetProjectTasks(int projectId)
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
             {
                 return Unauthorized(new { message = "Unauthorized" });
             }
-            var tasks = await _context.Tasks
+            var tasks =  _context.Tasks
               .Where(task => task.ProjectId == projectId)
               .Select(task => new
               {
@@ -82,7 +90,7 @@ namespace Redmine.Controllers
                   task.Deadline,
                   ManagerName = task.Manager.Name
               })
-              .ToListAsync();
+              .ToList();
 
           
 
@@ -107,7 +115,7 @@ namespace Redmine.Controllers
 
       [HttpGet("Developers")]
         [Authorize]
-      public async Task<IActionResult> getDevelopers()
+      public IActionResult getDevelopers()
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
@@ -115,7 +123,7 @@ namespace Redmine.Controllers
                 return Unauthorized(new { message = "Unauthorized" });
             }
             // Assuming UserId is a string representing developer name
-            var dev = await _context.Developers.Select(dev => new { dev.Id,dev.Name }).ToListAsync();
+            var dev =  _context.Developers.Select(dev => new { dev.Id,dev.Name }).ToList();
 
           return Ok(dev);
       }
@@ -123,7 +131,7 @@ namespace Redmine.Controllers
 
         [HttpPost("{devId}/task")]
         [Authorize]
-        public async Task<ActionResult<Task>> CreateTask(int devId, TaskModel model)
+        public ActionResult<Task> CreateTask(int devId, TaskModel model)
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
@@ -132,19 +140,20 @@ namespace Redmine.Controllers
             }
 
             // Ellenőrizzük, hogy a projekthez tartozik-e ilyen azonosítójú projekt
-            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == model.ProjectId);
+            var project =  _context.Projects.FirstOrDefault(p => p.Id == model.ProjectId);
             if (project == null)
             {
                 return NotFound("Nem található ilyen azonosítójú projekt.");
             }
 
             // Ellenőrizzük, hogy a fejlesztő létezik-e a rendszerben
-            var developer = await _context.Developers.FirstOrDefaultAsync(d => d.Id == devId);
+            var developer =  _context.Developers.FirstOrDefault(d => d.Id == devId);
             if (developer == null)
             {
                 return BadRequest("Nem található ilyen nevű fejlesztő.");
             }
-            var isDeveloperAssigned = await _context.ProjectDevelopers.AnyAsync(pd => pd.DeveloperId == devId && pd.ProjectId == model.ProjectId);
+            var isDeveloperAssigned =  _context.ProjectDevelopers.Any(pd => pd.DeveloperId == devId && pd.ProjectId == model.ProjectId);
+            
             if (isDeveloperAssigned)
             {
                 return Conflict("A megadott fejlesztő már hozzá van rendelve ehhez a projekthez.");
@@ -168,11 +177,11 @@ namespace Redmine.Controllers
             };
 
             // Hozzáadjuk az új feladatot a feladatokhoz
-            await _context.Tasks.AddAsync(newTask);
-            await _context.ProjectDevelopers.AddAsync(projectDeveloper);
+             _context.Tasks.Add(newTask);
+             _context.ProjectDevelopers.Add(projectDeveloper);
 
             // Mentjük a változásokat az adatbázisba
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
 
             var serializedTask = JsonSerializer.Serialize(newTask, _jsonOptions);
             return Content(serializedTask, "application/json");
@@ -184,7 +193,7 @@ namespace Redmine.Controllers
 
         [HttpGet("selfTask")]
         [Authorize]
-        public async Task<ActionResult> GetSelfTasks()
+        public ActionResult GetSelfTasks()
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
@@ -192,24 +201,24 @@ namespace Redmine.Controllers
                 return Unauthorized(new { message = "Unauthorized" });
             }
             // Assuming UserId is a string representing developer name
-            var currentUserTasks = await _context.Tasks.Where(t => t.ManagerId == managerId).Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToListAsync();
+            var currentUserTasks =  _context.Tasks.Where(t => t.ManagerId == managerId).Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToList();
             return Ok(currentUserTasks);
 
         }       
 
        // 6  autentikáció
        [HttpGet("deadlineTask")]
-        public async Task<ActionResult> GetDeadLineTasks()
+        public ActionResult GetDeadLineTasks()
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
             {
                 return Unauthorized(new { message = "Unauthorized" });
             }
-            var deadlineTasks = await _context.Tasks
+            var deadlineTasks =  _context.Tasks
                 .Where(t => t.Deadline.Date < DateTime.Today.AddDays(3)&& t.ManagerId == managerId )
                 .Select(task => new { task.Id, task.Name, task.Description, Deadline = task.Deadline.Date })
-                .ToListAsync();
+                .ToList();
 
             if (deadlineTasks.Any())
             {
