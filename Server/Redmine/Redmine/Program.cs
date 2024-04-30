@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using Microsoft.OpenApi.Models;
 using Redmine.WebSocketFolder;
 
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Titkos kulcs a JWT token aláírásához
@@ -85,10 +88,11 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
-builder.Services.AddTransient<WebSocketHandler>();
+builder.Services.AddSingleton<RedmineConnectionManager>();
+builder.Services.AddSingleton<RedmineWebSocketHandler>();
 var app = builder.Build();
 app.UseWebSockets();
-app.UseMiddleware<WebSocketMiddleware>();   
+app.UseMiddleware<RedmineWebSocketMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

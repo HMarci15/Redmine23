@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Net.WebSockets;
-
 
 namespace Redmine.WebSocketFolder
 {
-    public class WebSocketManager
+    public class RedmineConnectionManager
     {
         private readonly ConcurrentDictionary<string, WebSocket> _sockets = new ConcurrentDictionary<string, WebSocket>();
 
@@ -25,14 +23,16 @@ namespace Redmine.WebSocketFolder
             return _sockets;
         }
 
-        public string GetId(WebSocket socket)
+        public void RemoveSocket(WebSocket socket)
         {
-            foreach (var item in _sockets)
+            foreach (var (id, value) in _sockets)
             {
-                if (item.Value == socket)
-                    return item.Key;
+                if (value == socket)
+                {
+                    _sockets.TryRemove(id, out _);
+                    break;
+                }
             }
-            return null;
         }
     }
 }
