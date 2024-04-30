@@ -1,6 +1,7 @@
 const apiUrl = 'http://localhost:5148'; 
 const token = sessionStorage.getItem('token');
 const UserName = sessionStorage.getItem('name');
+const role = sessionStorage.getItem('role');
 if (!token) {
     console.error('Nincs token a localStorage-ban');
     window.location.href = './login.html';
@@ -37,9 +38,10 @@ window.onload = function() {
     div.classList.add('container-fluid');
 
     const name = localStorage.getItem('name');
+    
     const a = document.createElement('a');
     a.classList.add('navbar-brand');
-    a.innerHTML = `Üdvözlünk, ${UserName}!`;
+    a.innerHTML = `Üdvözlünk, ${UserName}! Az ön rangja ${role}!`;
     const form = document.createElement('form');
     form.classList.add('d-flex');
 
@@ -113,6 +115,8 @@ function searchOnType() {
     }
 }
 
+
+
 //deadline task
 document.getElementById("showDeadlineTasksBtn").addEventListener("click", function() {
    
@@ -145,6 +149,14 @@ document.getElementById("hideDeadlineTasksBtn").addEventListener("click", functi
   document.getElementById("showDeadlineTasksBtn").style.display = "inline-block";
 });
 
+function changeButtonName(buttonId, newName) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.textContent = newName;
+    }
+} 
+
+if(role == "Manager") {
 //selftask
 document.getElementById("showSelfTasksBtn").addEventListener("click", function() { // Event listener hozzáadása a saját feladatok gombhoz
    
@@ -176,7 +188,43 @@ document.getElementById("hideSelfTasksBtn").addEventListener("click", function()
   document.getElementById("hideSelfTasksBtn").style.display = "none";
   document.getElementById("showSelfTasksBtn").style.display = "inline-block";
 });
+}
+else {
+    document.getElementById("showSelfTasksBtn").addEventListener("click", function() { // Event listener hozzáadása a saját feladatok gombhoz
+   
+        fetch(`${apiUrl}/Project/selfTask`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            }
+        }) // Másik végpont hívása
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Hiba a válaszban');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log('Saját feladatok:', data);
+          displaySelfTasks(data);
+          document.getElementById("showSelfTasksBtn").style.display = "none";
+          document.getElementById("hideSelfTasksBtn").style.display = "inline-block";
+      })
+      .catch(error => console.error('Hiba:', error));
+    
+    });
+    
+    document.getElementById("hideSelfTasksBtn").addEventListener("click", function() {
+      document.getElementById("selfTasksTableContainer").style.display = "none";
+      document.getElementById("hideSelfTasksBtn").style.display = "none";
+      document.getElementById("showSelfTasksBtn").style.display = "inline-block";
+    });
+    changeButtonName('showSelfTasksBtn', 'Összes feladat megjelenítése');
+    changeButtonName('hideSelfTasksBtn', 'Összes feladat elrejtése');
+    changeButtonName('selfTasksTitle', 'Összes feladat');
 
+}
 
 function displayDeadlineTasks(tasks) {
   const tableBody = document.getElementById('deadlineTasksBody');
