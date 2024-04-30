@@ -14,7 +14,7 @@ namespace Redmine.data
         public DbSet<Developer> Developers { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectType> ProjectTypes { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Ptask> Tasks { get; set; }
         public DbSet<ProjectDeveloper> ProjectDevelopers { get; set; }
 
 
@@ -59,11 +59,11 @@ namespace Redmine.data
 
             );
 
-            modelBuilder.Entity<Task>().HasData(
-                new Task { Id = 1, Name = "Implement Payment Gateway", Description = "Integrate Stripe payment gateway for secure online transactions.", ProjectId = 1, ManagerId = 1, Deadline = DateTime.Now.AddDays(14).Date },
-                new Task { Id = 2, Name = "User Authentication", Description = "Implement user authentication using JWT for the mobile app.", ProjectId = 2, ManagerId = 2, Deadline = DateTime.Now.AddDays(10).Date },
-                new Task { Id = 3, Name = "Data Visualization", Description = "Create interactive charts and graphs for visualizing sales data.", ProjectId = 3, ManagerId = 1, Deadline = DateTime.Now.AddDays(21).Date },
-                new Task { Id = 4, Name = "Social Media Login", Description = "Allow users to log in using their social media accounts.", ProjectId = 4, ManagerId = 2, Deadline = DateTime.Now.AddDays(7).Date }
+            modelBuilder.Entity<Ptask>().HasData(
+                new Ptask { Id = 1, Name = "Implement Payment Gateway", Description = "Integrate Stripe payment gateway for secure online transactions.", ProjectId = 1, ManagerId = 1, Deadline = DateTime.Now.AddDays(14).Date },
+                new Ptask { Id = 2, Name = "User Authentication", Description = "Implement user authentication using JWT for the mobile app.", ProjectId = 2, ManagerId = 2, Deadline = DateTime.Now.AddDays(10).Date },
+                new Ptask { Id = 3, Name = "Data Visualization", Description = "Create interactive charts and graphs for visualizing sales data.", ProjectId = 3, ManagerId = 1, Deadline = DateTime.Now.AddDays(21).Date },
+                new Ptask { Id = 4, Name = "Social Media Login", Description = "Allow users to log in using their social media accounts.", ProjectId = 4, ManagerId = 2, Deadline = DateTime.Now.AddDays(7).Date }
 
             );
 

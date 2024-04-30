@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.OpenApi.Models;
+using Redmine.WebSocketFolder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -84,7 +85,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
+builder.Services.AddTransient<WebSocketHandler>();
 var app = builder.Build();
+app.UseWebSockets();
+app.UseMiddleware<WebSocketMiddleware>();   
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

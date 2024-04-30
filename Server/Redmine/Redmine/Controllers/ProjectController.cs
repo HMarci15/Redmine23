@@ -132,7 +132,7 @@ namespace Redmine.Controllers
 
         [HttpPost("{devId}/task")]
         [Authorize]
-        public ActionResult<Task> CreateTask(int devId, TaskModel model)
+        public ActionResult<Ptask> CreateTask(int devId, TaskModel model)
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
@@ -161,7 +161,7 @@ namespace Redmine.Controllers
             }
 
             // Új feladat létrehozása
-            var newTask = new Task
+            var newTask = new Ptask
             {
                 Id = _context.Tasks.Max(t => t.Id) + 1,
                 Name = model.Name,

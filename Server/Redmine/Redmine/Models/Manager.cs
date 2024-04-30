@@ -15,7 +15,7 @@ public class Manager
     public string Role { get; set; }
 
     //map
-    public List<Task> Tasks { get; set; }
+    public List<Ptask> Tasks { get; set; }
 }
 
 

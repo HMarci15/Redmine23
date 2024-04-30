@@ -19,5 +19,5 @@ public class Project
 
     public List<Developer> Developers { get; set; }
 
-    public List<Task> Tasks { get; set; }
+    public List<Ptask> Tasks { get; set; }
 }
