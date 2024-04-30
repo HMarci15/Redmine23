@@ -29,9 +29,9 @@ namespace Redmine.data
 
 
             modelBuilder.Entity<Manager>().HasData(
-               new Manager { Id = 1, Name = "Horvath Marcell", Email = "marci@asd.com", Password = "marci123" },
-               new Manager { Id = 2, Name = "Kiss Csongor", Email = "csongor@asd.com", Password = "csongor123" },
-               new Manager { Id = 3, Name = "Biliboc Bence", Email = "bence@asd.com", Password = "bence123" }
+               new Manager { Id = 1, Name = "Horvath Marcell", Email = "marci@asd.com", Password = "marci123", Role = "Manager" },  
+               new Manager { Id = 2, Name = "Kiss Csongor", Email = "csongor@asd.com", Password = "csongor123", Role = "Admin" }, // 8265a0b34b15f6b779fbd02198dfd7520d28829b7e1440b39f100cefe465b526
+               new Manager { Id = 3, Name = "Biliboc Bence", Email = "bence@asd.com", Password = "bence123" ,Role = "Manager" }
            );
 
 

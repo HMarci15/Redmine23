@@ -11,6 +11,8 @@ public class Manager
     public string Email { get; set; }
 
     public string Password { get; set; }
+    
+    public string Role { get; set; }
 
     //map
     public List<Task> Tasks { get; set; }

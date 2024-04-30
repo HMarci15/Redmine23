@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Data.Entity;
+using System.Reflection;
 
 namespace Redmine.Controllers
 {
@@ -199,10 +200,19 @@ namespace Redmine.Controllers
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
             {
                 return Unauthorized(new { message = "Unauthorized" });
-            }
-            // Assuming UserId is a string representing developer name
-            var currentUserTasks =  _context.Tasks.Where(t => t.ManagerId == managerId).Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToList();
+            }else if(ClaimTypes.Role == "Admin")
+            {
+                var adminAllTasks = _context.Tasks.Select(tasks => new { tasks.Id, tasks.Name, tasks.Description, tasks.Deadline.Date }).ToList();
+                return Ok(adminAllTasks);
+            }else if(ClaimTypes.Role =="Manager")
+            {
+                     var currentUserTasks =  _context.Tasks.Where(t => t.ManagerId == managerId).Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToList();
             return Ok(currentUserTasks);
+            }
+
+            return BadRequest("Hibás valami !");
+           
+           
 
         }       
 

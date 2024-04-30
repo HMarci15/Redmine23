@@ -37,7 +37,7 @@ namespace Redmine.Controllers
             }
 
             var token = GenerateToken(foundManager);
-            return Ok(new { token,foundManager.Name });
+            return Ok(new { token,foundManager.Name, foundManager.Role });
         }
 
         private string GenerateToken(Manager manager)
@@ -51,6 +51,7 @@ namespace Redmine.Controllers
                 {
                     new Claim(ClaimTypes.NameIdentifier, manager.Id.ToString()),
                     new Claim(ClaimTypes.Name, manager.Name),
+                    new Claim(ClaimTypes.Role, manager.Role)
                     // Ide adhatod hozzá a további szükséges adatokat
                 }),
                 Expires = DateTime.UtcNow.AddHours(1), // Token érvényességi ideje
