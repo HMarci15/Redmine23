@@ -197,14 +197,16 @@ namespace Redmine.Controllers
         public ActionResult GetSelfTasks()
         {
             var managerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var roleClaim = User.FindFirst(ClaimTypes.Role)?.Value;
             if (string.IsNullOrEmpty(managerIdClaim) || !int.TryParse(managerIdClaim, out int managerId))
             {
                 return Unauthorized(new { message = "Unauthorized" });
-            }else if(ClaimTypes.Role == "Admin")
+            }
+            if(roleClaim == "Admin")
             {
                 var adminAllTasks = _context.Tasks.Select(tasks => new { tasks.Id, tasks.Name, tasks.Description, tasks.Deadline.Date }).ToList();
                 return Ok(adminAllTasks);
-            }else if(ClaimTypes.Role =="Manager")
+            }else if(roleClaim == "Manager")
             {
                      var currentUserTasks =  _context.Tasks.Where(t => t.ManagerId == managerId).Select(task => new { task.Id, task.Name, task.Description, task.Deadline.Date }).ToList();
             return Ok(currentUserTasks);
