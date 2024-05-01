@@ -14,6 +14,7 @@ using Redmine.WebSocketFolder;
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Build.Execution;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -88,11 +89,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
-builder.Services.AddSingleton<RedmineConnectionManager>();
-builder.Services.AddSingleton<RedmineWebSocketHandler>();
+builder.Services.AddSingleton<MyWebSocketManager>();
 var app = builder.Build();
 app.UseWebSockets();
-app.UseMiddleware<RedmineWebSocketMiddleware>();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
