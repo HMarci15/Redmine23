@@ -10,11 +10,14 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.OpenApi.Models;
-using Redmine.WebSocketFolder;
+
 
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Build.Execution;
+using Redmine.Services;
+using Redmine.WebSocketFolder;
+using Redmine.WebSocketFolder.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -88,10 +91,12 @@ builder.Services.AddSwaggerGen(c =>
 
 });
 
+builder.Services.AddScoped<Iproject, ProjectService>();
 
-builder.Services.AddSingleton<MyWebSocketManager>();
 var app = builder.Build();
 app.UseWebSockets();
+
+
 
 
 // Configure the HTTP request pipeline.
