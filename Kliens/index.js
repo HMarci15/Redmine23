@@ -1,4 +1,5 @@
-const apiUrl = 'http://localhost:5148'; 
+const apiUrl = 'http://localhost:5148';
+const socket = new WebSocket("ws://localhost:5148/ws");
 const token = sessionStorage.getItem('token');
 const UserName = sessionStorage.getItem('name');
 const role = sessionStorage.getItem('role');
@@ -7,6 +8,38 @@ if (!token) {
     window.location.href = './login.html';
     // Itt valószínűleg valamilyen további kezelést kell végrehajtani
 }
+
+socket.onopen = (event) => {
+    console.log("WebSocket sikeres !!");
+};
+
+
+   
+    fetch(`${apiUrl}/Project/deadlineTask`,{
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Hiba a válaszban');
+      }
+      return response.json();
+  })
+  .then(data => {
+            if(data == null)
+            {
+                socket.send("0"); 
+            }else{
+                socket.send(JSON.stringify(data));
+            }
+        
+    
+});
+
+
 
 
 fetch(`${apiUrl}/Project`,{
@@ -66,6 +99,10 @@ window.onload = function() {
 
     document.body.insertBefore(nav, document.body.firstChild);
 }
+socket.onmessage = (event) => {
+    alert(`Önnek ${event.data} db közeli határidős feladata van!!`);
+   
+};
 
 function displayProject(task) {
     const tableBody = document.getElementById('taskTableBody');
@@ -118,6 +155,7 @@ function searchOnType() {
 
 
 //deadline task
+
 document.getElementById("showDeadlineTasksBtn").addEventListener("click", function() {
    
     fetch(`${apiUrl}/Project/deadlineTask`,{
@@ -134,6 +172,8 @@ document.getElementById("showDeadlineTasksBtn").addEventListener("click", functi
       return response.json();
   })
   .then(data => {
+	
+
       console.log('Feladat adatok:', data);
       displayDeadlineTasks(data);
       document.getElementById("showDeadlineTasksBtn").style.display = "none";

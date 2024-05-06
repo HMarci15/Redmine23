@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Net.WebSockets;
 
 namespace Redmine.WebSocketFolder
@@ -6,7 +7,7 @@ namespace Redmine.WebSocketFolder
     public class ConnectionManager
     {
         private ConcurrentDictionary<string, System.Net.WebSockets.WebSocket> _sockets = new ConcurrentDictionary<string, System.Net.WebSockets.WebSocket>();
-
+       
         public System.Net.WebSockets.WebSocket GetSocketById(string id)
         {
             return _sockets.FirstOrDefault(p => p.Key == id).Value;
@@ -21,9 +22,11 @@ namespace Redmine.WebSocketFolder
         {
             return _sockets.FirstOrDefault(p => p.Value == socket).Key;
         }
+
         public void AddSocket(System.Net.WebSockets.WebSocket socket)
         {
             _sockets.TryAdd(CreateConnectionId(), socket);
+
         }
 
         public async Task RemoveSocket(string id)
@@ -34,10 +37,11 @@ namespace Redmine.WebSocketFolder
                                     statusDescription: "Closed by the ConnectionManager",
                                     cancellationToken: CancellationToken.None);
         }
-
         private string CreateConnectionId()
         {
             return Guid.NewGuid().ToString();
         }
+
+
     }
 }

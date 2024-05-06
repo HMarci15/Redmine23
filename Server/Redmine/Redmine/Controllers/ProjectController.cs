@@ -232,14 +232,7 @@ namespace Redmine.Controllers
                 .Select(task => new { task.Id, task.Name, task.Description, date = task.Deadline.Date })
                 .ToList();
 
-            if (deadlineTasks.Any())
-            {
-                return Ok(deadlineTasks);
-            }
-            else
-            {
-                return NotFound(new { Message = "Nincs elérhető feladat ma." });
-            }
+            return Ok(deadlineTasks);
         }
     }
 

@@ -19,6 +19,7 @@ namespace Redmine.WebSocketFolder
         {
             if (!context.WebSockets.IsWebSocketRequest)
                 return;
+            
 
             var socket = await context.WebSockets.AcceptWebSocketAsync();
             await _webSocketHandler.OnConnected(socket);

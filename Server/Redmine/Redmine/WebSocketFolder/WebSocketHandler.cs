@@ -14,7 +14,9 @@ namespace Redmine.WebSocketFolder
 
         public virtual async Task OnConnected(System.Net.WebSockets.WebSocket socket)
         {
-            WebSocketConnectionManager.AddSocket(socket);
+            WebSocketConnectionManager.AddSocket( socket);
+         
+           
         }
 
         public virtual async Task OnDisconnected(System.Net.WebSockets.WebSocket socket)

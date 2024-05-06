@@ -92,10 +92,13 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddScoped<Iproject, ProjectService>();
-
+builder.Services.AddWebSocketManager();
 var app = builder.Build();
-app.UseWebSockets();
 
+var serviceScopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();//A WebSocketManager használatához szükséges
+var serviceProvider = serviceScopeFactory.CreateScope().ServiceProvider;//A WebSocketManager használatához szükséges
+app.UseWebSockets();//Websocketek használatához szükséges
+app.MapWebSocketManager("/ws", serviceProvider.GetService<TaskHandler>());//A WebSocketManager-t használjuk a HelloWorldHandlerrel
 
 
 
