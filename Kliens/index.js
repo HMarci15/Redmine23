@@ -39,8 +39,61 @@ socket.onopen = (event) => {
     
 });
 
-
-
+//toast
+/* function createToast(message) {
+    // létrehozzuk a toast elemet
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.classList.add('show');
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'assertive');
+    toast.setAttribute('aria-atomic', 'true');
+  
+    // toast-header
+    const toastHeader = document.createElement('div');
+    toastHeader.classList.add('toast-header');
+  
+    const strong = document.createElement('strong');
+    strong.classList.add('mr-auto');
+    strong.textContent = 'Toast üzenet';
+  
+    const button = document.createElement('button');
+    button.classList.add('ml-2');
+    button.classList.add('mb-1');
+    button.classList.add('close');
+    button.setAttribute('type', 'button');
+    button.setAttribute('data-dismiss', 'toast');
+    button.setAttribute('aria-label', 'Close');
+  
+    const span = document.createElement('span');
+    span.setAttribute('aria-hidden', 'true');
+    span.innerHTML = '&times;';
+  
+    button.appendChild(span);
+    toastHeader.appendChild(strong);
+    toastHeader.appendChild(button);
+  
+    // toast-body
+    const toastBody = document.createElement('div');
+    toastBody.classList.add('toast-body');
+    toastBody.textContent = message;
+  
+    // toast összesítése
+    toast.appendChild(toastHeader);
+    toast.appendChild(toastBody);
+  
+    // toast elhelyezése a DOM-ban
+    document.body.appendChild(toast);
+  
+    // toast automatikus eltüntetése 5 másodperc után
+    setTimeout(function() {
+      $(toast).toast('hide');
+    }, 5000);
+  }
+  
+  // A toast üzenet megjelenítése
+  createToast('Önnek új közeli határidős feladata van!'); */
+  //toast
 
 fetch(`${apiUrl}/Project`,{
     method: 'GET',
@@ -99,10 +152,12 @@ window.onload = function() {
 
     document.body.insertBefore(nav, document.body.firstChild);
 }
-socket.onmessage = (event) => {
+
+
+/* socket.onmessage = (event) => {
     alert(`Önnek ${event.data} db közeli határidős feladata van!!`);
    
-};
+}; */
 
 function displayProject(task) {
     const tableBody = document.getElementById('taskTableBody');
@@ -303,3 +358,8 @@ function displaySelfTasks(tasks) {
 
   document.getElementById("selfTasksTableContainer").style.display = "block";
 }
+
+socket.onmessage = (event) => {
+    alert(`Önnek ${event.data} db közeli határidős feladata van!!`);
+   
+};
