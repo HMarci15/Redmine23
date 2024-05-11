@@ -55,3 +55,16 @@ body{
 .container {
     background-color: #ffffff;
 }
+
+.full-width {
+    position: fixed;
+    left: 0;
+    
+    width: 100%;
+    
+    color: white; /* Szövegszín */
+    padding: 10px; /* Belső tér */
+    box-sizing: border-box; /* A padding ne befolyásolja a div szélességét */
+    z-index: 9999; /* A legtetején jelenjen meg */
+  }
+  

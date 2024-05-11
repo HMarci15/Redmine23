@@ -1,3 +1,8 @@
+//import { Toast } from 'bootstrap/dist/js/bootstrap.bundle';
+//import 'bootstrap';
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.x/js/bootstrap.min.js"
 const apiUrl = 'http://localhost:5148';
 const socket = new WebSocket("ws://localhost:5148/ws");
 const token = sessionStorage.getItem('token');
@@ -131,8 +136,32 @@ window.onload = function() {
     a.classList.add('navbar-brand');
     a.innerHTML = `Üdvözlünk, ${UserName}! Az ön rangja ${role}!`;
     a.style.color = 'white'; // Szöveg színe fehér
+
+    const showWebSocketMessageButton = document.createElement('button'); 
+    showWebSocketMessageButton.id = 'wsbutton';
+    showWebSocketMessageButton.textContent = 'Értesítés';
+    showWebSocketMessageButton.classList.add('btn');
+    showWebSocketMessageButton.classList.add('btn-warning');
+    showWebSocketMessageButton.style.marginRight = '10px';
+
+  /*   const toastTrigger = document.getElementById('wsbutton')
+    const toastLiveExample = document.getElementById('liveToast')
+
+if (showWebSocketMessageButton) {
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+  showWebSocketMessageButton.addEventListener('click', () => {
+    toastBootstrap.show()
+  })
+} */
+    showWebSocketMessageButton.addEventListener('click', function() {
+        // WebSocket üzenet megjelenítése
+        createToast('WebSocket üzenet megjelenítve!');
+    });
+
     const form = document.createElement('form');
     form.classList.add('d-flex');
+
+
 
     const logoutButton = document.createElement('button');
     logoutButton.textContent = 'Kijelentkezés';
@@ -147,6 +176,8 @@ window.onload = function() {
 
     div.appendChild(a);
     
+    div.appendChild(showWebSocketMessageButton);
+
     form.appendChild(logoutButton);
     
     div.appendChild(form);
@@ -364,7 +395,60 @@ function displaySelfTasks(tasks) {
   document.getElementById("selfTasksTableContainer").style.display = "block";
 }
 
+function createToast(){
+const toastTrigger = document.getElementById('wsbutton')
+const toastLiveExample = document.getElementById('liveToast')
+
+if (toastTrigger) {
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+  toastTrigger.addEventListener('click', () => {
+    toastBootstrap.show()
+  })
+}
+}
+
+/* // WebSocket üzenet fogadása és toast megjelenítése
 socket.onmessage = (event) => {
+    const message = event.data;
+    createToast(message);
+};
+
+function createToast(message) {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = `
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+                <strong class="me-auto">WebSocket üzenet</strong>
+                <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                ${message}
+            </div>
+        </div>
+    `;
+    toastContainer.innerHTML += toast;
+    $('.toast').toast('show');
+} */
+
+/* function createToast(message) {
+    const toastContainer = document.getElementById('toastContainer');
+    const toast = `
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+            <div class="toast-header">
+                <strong class="me-auto">WebSocket üzenet</strong>
+                <button type="button" class="btn-close" data-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                ${message}
+            </div>
+        </div>
+    `;
+    toastContainer.innerHTML += toast;
+    $('.toast').toast('show');
+} */
+
+
+/* socket.onmessage = (event) => {
     alert(`Önnek ${event.data} db közeli határidős feladata van!!`);
    
-};
+}; */
