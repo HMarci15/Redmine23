@@ -7,31 +7,12 @@
   }
 
 
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-}
 
-.popup-content {
-    text-align: center;
-}
+    .img {
+        width: 32px; /* Állítsd be az ikon szélességét a kívánt méretre */
+        height: 32px; /* Állítsd be az ikon magasságát a kívánt méretre */
+    }
 
-.close {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    cursor: pointer;
-    color: white;
-    font-size: 20px;
-}
 
 
 
