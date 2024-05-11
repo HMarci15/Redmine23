@@ -8166,19 +8166,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\csong\\.nuget\\packages\\": {}
+    "C:\\Users\\Marci\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj",
+      "projectUniqueName": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj",
       "projectName": "Redmine",
-      "projectPath": "D:\\Github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj",
-      "packagesPath": "C:\\Users\\csong\\.nuget\\packages\\",
-      "outputPath": "D:\\Github_redmine\\Redmine23\\Server\\Redmine\\Redmine\\obj\\",
+      "projectPath": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\Redmine.csproj",
+      "packagesPath": "C:\\Users\\Marci\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Marci\\Documents\\GitHub\\Redmine23\\Server\\Redmine\\Redmine\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\csong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Marci\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8265,7 +8265,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

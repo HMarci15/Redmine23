@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redmine</title>
+    <link rel="stylesheet" href="style.css">
     <link href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -23,7 +24,7 @@
 
     <input type="text" id="myInput" onkeyup="searchOnType()" placeholder="Keresés típus alapján..." title="Type in a name">
 
-    <table class="table table-dark" style="border-radius: 10px; background-color: #27187e;">
+    <table class="table table-dark" >
       <thead>
         <tr>
           <th>Projekt azonosítója</th>
@@ -43,7 +44,7 @@
 
     <div id="deadlineTasksTableContainer" style="display: none;"> <!-- Külön container a Közeli Határidős Feladatokhoz -->
       <h1 id="deadlineTasksTitle" class="text-center my-4">Közeli Határidős Feladatok</h1> <!-- Külön cím a Közeli Határidős Feladatokhoz -->
-      <table class="table table-dark" style="border-radius: 10px; background-color: #27187e;">
+      <table class="table table-dark" >
           <thead>
               <tr> 
                   <th>Feladat azonosítója</th>
@@ -59,7 +60,7 @@
 
   <div id="selfTasksTableContainer" style="display: none;"> <!-- Külön container a Saját Feladatokhoz -->
       <h1 id="selfTasksTitle" class="text-center my-4">Saját Feladatok</h1> <!-- Külön cím a Saját Feladatokhoz -->
-      <table class="table table-dark" style="border-radius: 10px; background-color: #27187e;">
+      <table class="table table-dark" >
           <thead>
               <tr>
                   <th>Feladat azonosítója</th>

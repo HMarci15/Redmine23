@@ -7,28 +7,46 @@
   }
 
 
-.popup {
-    display: none;
+
+    .img {
+        width: 32px; /* Állítsd be az ikon szélességét a kívánt méretre */
+        height: 32px; /* Állítsd be az ikon magasságát a kívánt méretre */
+    }
+
+
+
+
+#showDeadlineTasksBtn {
+    background-color: #758bfd; /* Gomb háttérszíne */
+    color: white; /* Gomb szövegszíne */
+    border-color: #758bfd; /* Gomb keretének színe */
+}
+
+#showSelfTasksBtn {
+    background-color: #758bfd; /* Gomb háttérszíne */
+    color: white; /* Gomb szövegszíne */
+    border-color: #758bfd; /* Gomb keretének színe */
+}
+
+body{
+    background-color: #ffffff;
+
+}
+
+.container {
+    background-color: #ffffff;
+}
+
+.full-width {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    color: white;
-}
-
-.popup-content {
-    text-align: center;
-}
-
-.close {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    cursor: pointer;
-    color: white;
-    font-size: 20px;
-}
+    left: 0;
+    
+    width: 100%;
+    
+    color: white; /* Szövegszín */
+    padding: 10px; /* Belső tér */
+    box-sizing: border-box; /* A padding ne befolyásolja a div szélességét */
+    z-index: 9999; /* A legtetején jelenjen meg */
+  }
+  
+ 

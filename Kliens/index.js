@@ -67,53 +67,48 @@ window.onload = function() {
     const nav = document.createElement('nav');
     nav.classList.add('navbar');
     nav.classList.add('fixed-top');
-    nav.style.backgroundColor = '#27187e'; // Háttérszín beállítása
+    nav.style.backgroundColor = '#758bfd'; // Háttérszín beállítása
     nav.style.color = 'white'; // Szöveg színe fehér
 
     const div = document.createElement('div');
     div.classList.add('container-fluid');
 
- 
-
     const a = document.createElement('a');
     a.classList.add('navbar-brand');
     a.innerHTML = `Üdvözlünk, ${UserName}! Az ön rangja ${role}!`;
     a.style.color = 'white'; // Szöveg színe fehér
-     socket.onmessage = (event) => {
-    wsMess = event.data;
-    console.log(wsMess);
-   
-}; 
 
+    socket.onmessage = (event) => {
+        wsMess = event.data;
+        console.log(wsMess);
+       
+    };
     const showWebSocketMessageButton = document.createElement('button'); 
     showWebSocketMessageButton.id = 'wsbutton';
-    showWebSocketMessageButton.textContent = 'Értesítés';
+    showWebSocketMessageButton.textContent = 'Értesítések';
     showWebSocketMessageButton.classList.add('btn');
     showWebSocketMessageButton.classList.add('btn-warning');
     showWebSocketMessageButton.style.marginRight = '10px';
 
- showWebSocketMessageButton.addEventListener('click', function (){
-    const toastb = document.getElementById('myToast');
-    toastb.innerHTML = `<div class="toast-header d-flex align-items-center">
-    <div class="me-2">
-        <img src="kepek/icon_war.png" class="rounded img" alt="..." style="width: 32px; height: 32px;">
+    showWebSocketMessageButton.addEventListener('click', function (){
+        const toastb = document.getElementById('myToast');
+        toastb.innerHTML = `<div class="toast-header d-flex align-items-center">
+        <div class="me-2">
+            <img src="kepek/icon_war.png" class="rounded img" alt="..." style="width: 32px; height: 32px;">
+        </div>
+        <strong class="me-auto">FIGYELMEZTÉS!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <strong class="me-auto">FIGYELMEZTÉS!</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-</div>
-<div class="toast-body">
-    Önnek ${wsMess} db közeli határidős feladata van!!
-</div>`;
-    var myToast = new bootstrap.Toast(document.getElementById('myToast'));
-    
-    myToast.show();
- });
-    
+    <div class="toast-body">
+        Önnek ${wsMess} db közeli határidős feladata van!!
+    </div>`;
+        var myToast = new bootstrap.Toast(document.getElementById('myToast'));
+        
+        myToast.show();
+    });
 
     const form = document.createElement('form');
     form.classList.add('d-flex');
-
-
 
     const logoutButton = document.createElement('button');
     logoutButton.textContent = 'Kijelentkezés';
@@ -126,18 +121,16 @@ window.onload = function() {
         window.location.href = 'login.html'; // Átirányítás a login.html oldalra
     });
 
-    div.appendChild(a);
-    
     div.appendChild(showWebSocketMessageButton);
-
+    div.appendChild(a);
     form.appendChild(logoutButton);
-    
     div.appendChild(form);
-    
+
     nav.appendChild(div);
 
     document.body.insertBefore(nav, document.body.firstChild);
 }
+
 
 
 
