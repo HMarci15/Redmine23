@@ -118,16 +118,19 @@ window.onload = function() {
     const nav = document.createElement('nav');
     nav.classList.add('navbar');
     nav.classList.add('fixed-top');
-    nav.classList.add('bg-primary');
+    nav.style.backgroundColor = '#27187e'; // Háttérszín beállítása
+    nav.style.color = 'white'; // Szöveg színe fehér
 
     const div = document.createElement('div');
     div.classList.add('container-fluid');
 
-    const name = localStorage.getItem('name');
-    
+    const UserName = localStorage.getItem('name'); // UserName hozzáadása
+    //const role = "User"; // role hozzáadása, vagy használhatod a localStorage-ból is, ha ott van
+
     const a = document.createElement('a');
     a.classList.add('navbar-brand');
     a.innerHTML = `Üdvözlünk, ${UserName}! Az ön rangja ${role}!`;
+    a.style.color = 'white'; // Szöveg színe fehér
     const form = document.createElement('form');
     form.classList.add('d-flex');
 
@@ -154,6 +157,7 @@ window.onload = function() {
 }
 
 
+
 /* socket.onmessage = (event) => {
     alert(`Önnek ${event.data} db közeli határidős feladata van!!`);
    
@@ -171,11 +175,12 @@ function displayProject(task) {
                 <td>${item.description}</td>
                 <td>${item.projectTypeName}</td>
                 <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="list.html#${item.id}"><button type="button" class="btn btn-primary">Feladatok</button></a>
-                        <span style="margin-right: 5px;"></span> <!-- Üres span elem a gombok között -->
-                        <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary">Hozzáadás</button></a>
-                    </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="list.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #758bfd; border-color: #27187e;">Feladatok</button></a>
+                    <span style="margin-right: 5px;"></span> <!-- Üres span elem a gombok között -->
+                    <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #758bfd; border-color: #27187e;">Hozzáadás</button></a>
+                </div>
+            
                 </td>
             </tr>
         `;

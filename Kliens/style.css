@@ -35,3 +35,23 @@
 
 
 
+#showDeadlineTasksBtn {
+    background-color: #758bfd; /* Gomb háttérszíne */
+    color: white; /* Gomb szövegszíne */
+    border-color: #758bfd; /* Gomb keretének színe */
+}
+
+#showSelfTasksBtn {
+    background-color: #758bfd; /* Gomb háttérszíne */
+    color: white; /* Gomb szövegszíne */
+    border-color: #758bfd; /* Gomb keretének színe */
+}
+
+body{
+    background-color: #ffffff;
+
+}
+
+.container {
+    background-color: #ffffff;
+}
