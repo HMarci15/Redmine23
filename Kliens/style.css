@@ -17,15 +17,15 @@
 
 
 #showDeadlineTasksBtn {
-    background-color: #758bfd; /* Gomb háttérszíne */
+    background-color: #f48c06; /* Gomb háttérszíne */
     color: white; /* Gomb szövegszíne */
-    border-color: #758bfd; /* Gomb keretének színe */
+    border-color: #f48c06; /* Gomb keretének színe */
 }
 
 #showSelfTasksBtn {
-    background-color: #758bfd; /* Gomb háttérszíne */
+    background-color: #f48c06; /* Gomb háttérszíne */
     color: white; /* Gomb szövegszíne */
-    border-color: #758bfd; /* Gomb keretének színe */
+    border-color: #f48c06; /* Gomb keretének színe */
 }
 
 body{
@@ -49,4 +49,6 @@ body{
     z-index: 9999; /* A legtetején jelenjen meg */
   }
   
- 
+ #igen{
+    background-color: aqua;
+ }

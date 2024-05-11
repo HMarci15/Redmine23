@@ -67,7 +67,7 @@ window.onload = function() {
     const nav = document.createElement('nav');
     nav.classList.add('navbar');
     nav.classList.add('fixed-top');
-    nav.style.backgroundColor = '#758bfd'; // Háttérszín beállítása
+    nav.style.backgroundColor = '#f48c06'; // Háttérszín beállítása
     nav.style.color = 'white'; // Szöveg színe fehér
 
     const div = document.createElement('div');
@@ -77,6 +77,7 @@ window.onload = function() {
     a.classList.add('navbar-brand');
     a.innerHTML = `Üdvözlünk, ${UserName}! Az ön rangja ${role}!`;
     a.style.color = 'white'; // Szöveg színe fehér
+   // a.style.textShadow= '-0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000';
 
     socket.onmessage = (event) => {
         wsMess = event.data;
@@ -89,6 +90,8 @@ window.onload = function() {
     showWebSocketMessageButton.classList.add('btn');
     showWebSocketMessageButton.classList.add('btn-warning');
     showWebSocketMessageButton.style.marginRight = '10px';
+    showWebSocketMessageButton.style.color = 'white';
+    
 
     showWebSocketMessageButton.addEventListener('click', function (){
         const toastb = document.getElementById('myToast');
@@ -114,6 +117,7 @@ window.onload = function() {
     logoutButton.textContent = 'Kijelentkezés';
     logoutButton.classList.add('btn');
     logoutButton.classList.add('btn-danger');
+    
     logoutButton.setAttribute("type", "button");
 
     logoutButton.addEventListener('click', function () {
@@ -149,9 +153,9 @@ function displayProject(task) {
                 <td>${item.projectTypeName}</td>
                 <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="list.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #758bfd; border-color: #27187e;">Feladatok</button></a>
+                    <a href="list.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #f48c06; border-color: #f48c06;">Feladatok</button></a>
                     <span style="margin-right: 5px;"></span> <!-- Üres span elem a gombok között -->
-                    <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #758bfd; border-color: #27187e;">Hozzáadás</button></a>
+                    <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #f48c06; border-color: #f48c06;">Hozzáadás</button></a>
                 </div>
             
                 </td>
