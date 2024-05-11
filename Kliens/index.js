@@ -124,7 +124,7 @@ window.onload = function() {
     const div = document.createElement('div');
     div.classList.add('container-fluid');
 
-    const UserName = localStorage.getItem('name'); // UserName hozzáadása
+    //const UserName = localStorage.getItem('name'); // UserName hozzáadása
     //const role = "User"; // role hozzáadása, vagy használhatod a localStorage-ból is, ha ott van
 
     const a = document.createElement('a');
