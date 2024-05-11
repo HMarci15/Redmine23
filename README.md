@@ -10,5 +10,5 @@
 - A futtatási lehetőségek közül válassza ki a "http"-t
 - Futtassa a programot, hogy elinduljon a szerver
 - Lépjen be a Kliens mappába, majd nyissa meg a login.html-t
-- Bejelentkezéshez használja a következő adatokat: Email-cím: marci@asd.com, csongor@asd.com, biliboc@asd.com ; Jelszó: marci123, csongor123, biliboc123
+- Bejelentkezéshez használja a következő adatokat: Email-cím: marci@asd.com, csongor@asd.com, bence@asd.com ; Jelszó: marci123, csongor123, bence123
 
