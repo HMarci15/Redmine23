@@ -74,7 +74,13 @@ function addTaskToEndpoint(taskName, taskDescription, developerId, taskDeadline)
         $('#taskName').val('');
         $('#taskDescription').val('');
         $('#taskDeadline').val('');
+        $('#developer').val('');
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Válasszon fejlesztőt...';
+        document.getElementById('developer').appendChild(defaultOption);
     })
+    
     .catch(error => {
         console.error('Hiba:', error);
         alert('Az adott projekthez már hozzá van adva a kiválasztott fejlesztő!');
