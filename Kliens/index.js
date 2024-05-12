@@ -99,7 +99,7 @@ window.onload = function() {
         <div class="me-2">
             <img src="kepek/icon_war.png" class="rounded img" alt="..." style="width: 32px; height: 32px;">
         </div>
-        <strong class="me-auto">FIGYELMEZTÉS!</strong>
+        <strong class="me-auto">FIGYELMEZTETÉS!</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
@@ -147,23 +147,23 @@ function displayProject(task) {
     task.forEach((item, index) => {
         const row = `
             <tr>
-                <td>${item.id}</td>
-                <td>${item.name}</td>
-                <td>${item.description}</td>
-                <td>${item.projectTypeName}</td>
-                <td>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="list.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #f48c06; border-color: #f48c06;">Feladatok</button></a>
-                    <span style="margin-right: 5px;"></span> <!-- Üres span elem a gombok között -->
-                    <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #f48c06; border-color: #f48c06;">Hozzáadás</button></a>
-                </div>
-            
+                <td style="vertical-align: middle; ">${item.id}</td>
+                <td style="vertical-align: middle; ">${item.name}</td>
+                <td style="vertical-align: middle; ">${item.description}</td>
+                <td style="vertical-align: middle; ">${item.projectTypeName}</td>
+                <td style="vertical-align: middle; ">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a href="list.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #f48c06; border-color: #f48c06;">Feladatok</button></a>
+                        <span style="margin-right: 5px;"></span> <!-- Üres span elem a gombok között -->
+                        <a href="addtask.html#${item.id}"><button type="button" class="btn btn-primary" style="background-color: #f48c06; border-color: #f48c06;">Hozzáadás</button></a>
+                    </div>
                 </td>
             </tr>
         `;
         tableBody.innerHTML += row;
     });
 }
+
 
 
 
